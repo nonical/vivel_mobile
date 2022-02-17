@@ -37,12 +37,13 @@ class QuestionFormWidget extends StatelessWidget {
                     String question = questionEditingController.text;
 
                     final request = FAQRequest(question: question).ToJson();
-                    final responseCode = await FAQService.Post(request);
+                    final response = await FAQService.Post(request);
 
-                    final text = (responseCode == 200)
+                    final snackBarText = (response.statusCode == 200)
                         ? ("Successfully saved")
                         : ("An error occured");
-                    SnackBarUtil.openSnackBar(context, text);
+
+                    SnackBarUtil.openSnackBar(context, snackBarText);
                     Navigator.pop(context);
                   }
                 },

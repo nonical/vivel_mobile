@@ -27,6 +27,6 @@ class APIService {
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(object));
 
-    return response.statusCode;
+    return response;
   }
 }
