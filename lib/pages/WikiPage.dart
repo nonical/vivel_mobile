@@ -13,7 +13,7 @@ class WikiPage extends StatefulWidget {
 class _WikiPageState extends State<WikiPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: WikiNavigation(), body: bodyWidget());
+    return Scaffold(appBar: WikiNavigation(context), body: bodyWidget());
   }
 
   Widget bodyWidget() {
