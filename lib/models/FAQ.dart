@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 class FAQ {
-  final faqid;
-  final question;
-  final answer;
-  final answered;
-  final createdAt;
-  final updatedAt;
+  final String faqid;
+  final String question;
+  final String answer;
+  final bool answered;
+  final String createdAt;
+  final String updatedAt;
 
   FAQ(
-      {this.faqid,
-      this.question,
-      this.answer,
-      this.answered,
-      this.createdAt,
-      this.updatedAt});
+      {required this.faqid,
+      required this.question,
+      required this.answer,
+      required this.answered,
+      required this.createdAt,
+      required this.updatedAt});
 
   factory FAQ.fromJson(Map<String, dynamic> json) {
     return FAQ(

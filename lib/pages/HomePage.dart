@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/widgets/NavigationBar/HomeNavigation.dart';
+
+import 'WikiPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,17 +12,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Home"),
-        ),
+        appBar: HomeNavigation(),
         body: Column(children: [
           Text("Hello Home"),
           TextButton(
-            child: Text("Go to FAQ"),
-            onPressed: () => {
-              Navigator.of(context).pushNamed("/faq")
-            }
-          )
+              child: Text("Go to FAQ"),
+              onPressed: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => WikiPage()))
+                  })
         ]));
   }
 }
