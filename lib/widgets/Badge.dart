@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({Key? key, required this.image, required this.text})
+class BadgeWidget extends StatelessWidget {
+  const BadgeWidget({Key? key, required this.image, required this.text})
       : super(key: key);
 
   final ImageProvider<Object> image;
