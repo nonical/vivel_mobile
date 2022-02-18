@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/pages/badges_page.dart';
 import 'package:vivel_mobile/widgets/NavigationBar/HomeNavigation.dart';
 
 import 'WikiPage.dart';
@@ -20,6 +21,17 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => WikiPage()))
+                  }),
+          TextButton(
+              child: Text("Go to Badges"),
+              onPressed: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BadgesPage(
+                                  userId:
+                                      '49649a15-21a8-4048-abb5-2b17f5cb4efa',
+                                )))
                   })
         ]));
   }
