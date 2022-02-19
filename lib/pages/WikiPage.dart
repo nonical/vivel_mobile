@@ -13,7 +13,7 @@ class WikiPage extends StatefulWidget {
 class _WikiPageState extends State<WikiPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: WikiNavigation(), body: bodyWidget());
+    return Scaffold(appBar: WikiNavigation(context), body: bodyWidget());
   }
 
   Widget bodyWidget() {
@@ -21,7 +21,7 @@ class _WikiPageState extends State<WikiPage> {
       future: FAQService.Get(),
       builder: (BuildContext context, AsyncSnapshot<List<FAQ>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: Text("Loading..."),
           );
         }
@@ -34,17 +34,21 @@ class _WikiPageState extends State<WikiPage> {
           return ListView.separated(
             itemCount: snapshot.data!.length,
             separatorBuilder: (context, index) => Row(),
-            itemBuilder: (context, index) => Column(
-              children: [
-                FAQWidget(faq: snapshot.data![index]),
-                Divider(
-                  color: Colors.grey,
-                )
-              ],
+            itemBuilder: (context, index) => Container(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  FAQWidget(faq: snapshot.data![index]),
+                  const Divider(
+                    height: 0,
+                    color: Colors.grey,
+                  )
+                ],
+              ),
             ),
           );
         }
-        return Center(
+        return const Center(
           child: Text('No data'),
         );
       },

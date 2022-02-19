@@ -19,4 +19,14 @@ class APIService {
 
     return null;
   }
+
+  static Future<dynamic?> Post(String route, dynamic object) async {
+    String baseUrl = 'https://vivel.azurewebsites.net/$route/';
+
+    final response = await http.post(Uri.parse(baseUrl),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(object));
+
+    return response;
+  }
 }
