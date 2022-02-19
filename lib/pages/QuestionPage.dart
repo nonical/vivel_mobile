@@ -10,32 +10,21 @@ class QuestionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: BackNavigation("Ask a question"),
-        body: Container(
-          child: Column(children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 40, 30, 30),
-                    child: Text(
-                      "Your question",
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                )
-              ],
+        body: Column(children: [
+          Expanded(
+            flex: 2,
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
+                child: Text(
+                  "Your question",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w400),
+                ),
+              ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(30, 10, 30, 20),
-                      child: QuestionFormWidget()),
-                )
-              ],
-            )
-          ]),
-        ));
+          ),
+          Expanded(flex: 9, child: QuestionFormWidget())
+        ]));
   }
 }
