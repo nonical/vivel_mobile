@@ -2,7 +2,7 @@ class Donation {
   final String donationId;
   final String driveId;
   final String scheduledAt;
-  final num amount;
+  final int amount;
   final String status;
   final String note;
   final num leukocyteCount;

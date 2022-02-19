@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/donation.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
 import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
-import 'package:vivel_mobile/widgets/donation.dart';
+import 'package:vivel_mobile/widgets/donation_list_item.dart';
 
 class MyDonationsPage extends StatefulWidget {
   final String userId;
@@ -38,7 +38,7 @@ class _MyDonationsPageState extends State<MyDonationsPage> {
                   color: Colors.white,
                   child: Column(
                     children: [
-                      DonationWidget(donation: snapshot.data![index]),
+                      DonationListItemWidget(donation: snapshot.data![index]),
                       const Divider(
                         height: 1,
                         color: Colors.grey,

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:vivel_mobile/models/donation.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
-class DonationWidget extends StatelessWidget {
+class DonationListItemWidget extends StatelessWidget {
   final Donation donation;
 
-  const DonationWidget({Key? key, required this.donation}) : super(key: key);
+  const DonationListItemWidget({Key? key, required this.donation})
+      : super(key: key);
 
   Widget statusText(String status) {
     Color textColor = Color.fromRGBO(153, 153, 153, 100);
