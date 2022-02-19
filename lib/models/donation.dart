@@ -5,9 +5,9 @@ class Donation {
   final int amount;
   final String status;
   final String note;
-  final num leukocyteCount;
-  final num erythrocyteCount;
-  final num plateletCount;
+  final int leukocyteCount;
+  final int erythrocyteCount;
+  final int plateletCount;
 
   Donation({
     required this.donationId,
