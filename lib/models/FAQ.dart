@@ -11,7 +11,7 @@ class FAQ {
     return FAQ(
         faqid: json["faqid"],
         question: json["question"],
-        answer: json["answer"] ?? "no answer");
+        answer: json["answer"]);
   }
 }
 
