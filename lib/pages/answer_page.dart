@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/BackNavigation.dart';
+import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
 
-import '../models/FAQ.dart';
+import '../models/faq.dart';
 
 class AnswerPage extends StatelessWidget {
   final FAQ faq;

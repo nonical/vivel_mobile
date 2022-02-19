@@ -1,6 +1,6 @@
-import 'package:vivel_mobile/models/FAQ.dart';
+import 'package:vivel_mobile/models/faq.dart';
 
-import 'APIService.dart';
+import 'api_service.dart';
 
 class FAQService {
   static Future<List<FAQ>> Get() async {

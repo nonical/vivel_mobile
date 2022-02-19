@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/badge.dart';
 import 'package:vivel_mobile/services/badge_service.dart';
-import 'package:vivel_mobile/widgets/Badge.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/BackNavigation.dart';
+import 'package:vivel_mobile/widgets/badge.dart';
+import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
 
 class BadgesPage extends StatefulWidget {
   final String userId;

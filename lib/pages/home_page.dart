@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/pages/badges_page.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/HomeNavigation.dart';
+import 'package:vivel_mobile/widgets/NavigationBar/home_navigation.dart';
 
-import 'WikiPage.dart';
+import 'wiki_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

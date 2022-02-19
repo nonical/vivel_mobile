@@ -1,5 +1,5 @@
 import '../models/badge.dart';
-import 'APIService.dart';
+import 'api_service.dart';
 
 class BadgeService {
   static Future<List<Badge>> get(String userId) async {

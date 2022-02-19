@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/WikiNavigation.dart';
+import 'package:vivel_mobile/widgets/NavigationBar/wiki_navigation.dart';
 
-import '../models/FAQ.dart';
-import '../services/FAQService.dart';
-import '../widgets/FAQWidget.dart';
+import '../models/faq.dart';
+import '../services/faq_service.dart';
+import '../widgets/faq.dart';
 
 class WikiPage extends StatefulWidget {
   @override

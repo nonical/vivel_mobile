@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/pages/HomePage.dart';
+import 'package:vivel_mobile/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());

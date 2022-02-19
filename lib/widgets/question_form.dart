@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/models/FAQ.dart';
-import 'package:vivel_mobile/services/FAQService.dart';
-import 'package:vivel_mobile/utils/SnackBarUtil.dart';
+import 'package:vivel_mobile/models/faq.dart';
+import 'package:vivel_mobile/services/faq_service.dart';
+import 'package:vivel_mobile/utils/snack_bar.dart';
 
-import 'SubmitButton.dart';
+import 'submit_button.dart';
 
 class QuestionFormWidget extends StatelessWidget {
   final formKey = GlobalKey<FormState>();

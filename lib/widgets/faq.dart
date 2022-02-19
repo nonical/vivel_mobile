@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/FAQ.dart';
-import '../pages/AnswerPage.dart';
+import '../models/faq.dart';
+import '../pages/answer_page.dart';
 
 class FAQWidget extends StatelessWidget {
   final FAQ faq;

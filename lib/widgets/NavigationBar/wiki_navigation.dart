@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/pages/QuestionPage.dart';
+import 'package:vivel_mobile/pages/question_page.dart';
 
 class WikiNavigation extends AppBar {
   WikiNavigation(BuildContext context)
