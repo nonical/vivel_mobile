@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/wiki_navigation.dart';
+import 'package:vivel_mobile/models/user_notification.dart';
+import 'package:vivel_mobile/services/user_notification_service.dart';
+import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/user_notification.dart';
 
-import '../models/faq.dart';
-import '../services/faq_service.dart';
-import '../widgets/faq.dart';
+class NotificationsPage extends StatefulWidget {
+  final String userId;
 
-class WikiPage extends StatefulWidget {
-  const WikiPage({Key? key}) : super(key: key);
+  const NotificationsPage({Key? key, required this.userId}) : super(key: key);
 
   @override
-  _WikiPageState createState() => _WikiPageState();
+  _NotificationsPageState createState() => _NotificationsPageState();
 }
 
-class _WikiPageState extends State<WikiPage> {
-  late Future<List<FAQ>> faqs;
+class _NotificationsPageState extends State<NotificationsPage> {
+  late Future<List<UserNotification>> notifications;
 
   @override
   void initState() {
     super.initState();
-    faqs = FAQService.Get();
+    notifications = UserNotificationService.get(widget.userId);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: WikiNavigation(context),
-        body: FutureBuilder<List<FAQ>>(
-          future: faqs,
-          builder: (BuildContext context, AsyncSnapshot<List<FAQ>> snapshot) {
+        appBar: BackNavigation("Notifications"),
+        body: FutureBuilder<List<UserNotification>>(
+          future: notifications,
+          builder: (BuildContext context,
+              AsyncSnapshot<List<UserNotification>> snapshot) {
             if (snapshot.hasData && snapshot.data!.isNotEmpty) {
               return ListView.separated(
                 itemCount: snapshot.data!.length,
@@ -36,7 +38,8 @@ class _WikiPageState extends State<WikiPage> {
                   color: Colors.white,
                   child: Column(
                     children: [
-                      FAQWidget(faq: snapshot.data![index]),
+                      UserNotificationWidget(
+                          notification: snapshot.data![index]),
                       const Divider(
                         height: 1,
                         color: Colors.grey,
