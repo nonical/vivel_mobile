@@ -12,6 +12,6 @@ class FAQService {
   }
 
   static Future<dynamic> Post(dynamic json) async {
-    return await APIService.Post("faq", json);
+    return APIService.Post("faq", json);
   }
 }
