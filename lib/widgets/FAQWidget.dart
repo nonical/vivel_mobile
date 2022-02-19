@@ -18,6 +18,7 @@ class FAQWidget extends StatelessWidget {
             )),
       },
       child: Container(
+        color: Colors.white,
         height: 130,
         child: Row(
           children: [
@@ -25,14 +26,9 @@ class FAQWidget extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15),
-                          child: Image.asset('assets/help-circle.png'),
-                        )
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Image.asset('assets/help-circle.png'),
                     )
                   ],
                 )),
@@ -46,7 +42,7 @@ class FAQWidget extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                           child: Text(faq.question,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 17, fontWeight: FontWeight.w500)),
                         ),
                       ),
