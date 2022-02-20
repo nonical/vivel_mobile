@@ -10,7 +10,6 @@ class ProfileHeader extends StatelessWidget {
     return SizedBox(
         height: 150,
         child: Row(
-          mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(
               flex: 2,
