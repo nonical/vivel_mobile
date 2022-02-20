@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/pages/active_drives_page.dart';
 import 'package:vivel_mobile/widgets/drive.dart';
@@ -20,7 +21,7 @@ class HomeDrives extends StatelessWidget {
               Column(children: const [
                 Text(
                   "Active drives",
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                  style: HEADING5,
                 )
               ]),
               Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
 
 class HomeHeader extends StatelessWidget {
   final Widget leftColumn;
@@ -11,7 +12,7 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -27,8 +28,8 @@ class HomeHeader extends StatelessWidget {
       height: 90,
       child: Row(children: [
         Expanded(flex: 1, child: leftColumn),
-        VerticalDivider(
-          color: Colors.black,
+        const VerticalDivider(
+          color: GRAY4,
           indent: 15,
           endIndent: 15,
         ),

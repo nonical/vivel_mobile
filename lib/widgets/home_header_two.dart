@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/constants/colors.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/widgets/home_header.dart';
 
 class HomeHeaderTwo extends StatelessWidget {
@@ -22,17 +23,17 @@ class HomeHeaderTwo extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 5),
                   child: Text(
                     "Next donation",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+                    style: HEADING3,
                   ),
                 ),
               ))
             ]),
             Row(
-              children: const [
+              children: [
                 Expanded(
                     child: Center(
                         child: Text("Earliest you can donate",
-                            style: TextStyle(fontSize: 12, color: GRAY3))))
+                            style: CAPTION1.copyWith(color: GRAY3))))
               ],
             )
           ],
@@ -43,11 +44,8 @@ class HomeHeaderTwo extends StatelessWidget {
             Row(children: [
               Expanded(
                   child: Center(
-                child: Text(nextDonation,
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: GREEN)),
+                child:
+                    Text(nextDonation, style: HEADING3.copyWith(color: GREEN)),
               ))
             ])
           ],

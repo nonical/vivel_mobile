@@ -25,7 +25,7 @@ class HomeHeaderOne extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 5),
                 child: Text(
                   "Total donations",
-                  style: TextStyle(fontSize: 17),
+                  style: HEADING5,
                 ),
               ),
             ))
@@ -35,10 +35,7 @@ class HomeHeaderOne extends StatelessWidget {
               Expanded(
                   child: Center(
                       child: Text(totalDonations.toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 22,
-                              color: GREEN))))
+                          style: HEADING3.copyWith(color: GREEN))))
             ],
           )
         ],
@@ -51,7 +48,7 @@ class HomeHeaderOne extends StatelessWidget {
                 child: Center(
               child: Padding(
                 padding: EdgeInsets.only(bottom: 5),
-                child: Text("Last donation", style: TextStyle(fontSize: 17)),
+                child: Text("Last donation", style: HEADING5),
               ),
             ))
           ]),
@@ -59,9 +56,7 @@ class HomeHeaderOne extends StatelessWidget {
             children: [
               Expanded(
                   child: Center(
-                child: Text(lastDonation,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 22, color: RED)),
+                child: Text(lastDonation, style: HEADING3.copyWith(color: RED)),
               ))
             ],
           )
