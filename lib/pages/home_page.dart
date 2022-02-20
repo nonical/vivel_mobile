@@ -3,6 +3,7 @@ import 'package:vivel_mobile/pages/active_drives_page.dart';
 import 'package:vivel_mobile/pages/badges_page.dart';
 import 'package:vivel_mobile/pages/donation_page.dart';
 import 'package:vivel_mobile/pages/my_donations_page.dart';
+import 'package:vivel_mobile/pages/profile_page.dart';
 import 'package:vivel_mobile/pages/user_notifications_page.dart';
 import 'package:vivel_mobile/widgets/NavigationBar/home_navigation.dart';
 
@@ -77,6 +78,17 @@ class _HomePageState extends State<HomePage> {
                                   donationId:
                                       '6ef5f7c2-821f-4b01-b661-47be01c6f714',
                                 )))
+                  }),
+          TextButton(
+              child: Text("Go to My profile"),
+              onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfilePage(
+                                userId: "49649a15-21a8-4048-abb5-2b17f5cb4efa",
+                              )),
+                    )
                   })
         ]));
   }

@@ -10,23 +10,20 @@ class BadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.only(bottom: 40),
-        child: CardContainer(
-          child: Column(
-            children: [
-              Expanded(
-                  child: Center(
-                      child: Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(image: image)),
-              ))),
-              Expanded(child: Center(child: Text(text)))
-            ],
-          ),
-        ));
+    return CardContainer(
+      child: Column(
+        children: [
+          Expanded(
+              child: Center(
+                  child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle, image: DecorationImage(image: image)),
+          ))),
+          Expanded(child: Center(child: Text(text)))
+        ],
+      ),
+    );
   }
 }

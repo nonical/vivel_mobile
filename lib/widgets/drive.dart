@@ -13,7 +13,7 @@ class DriveWidget extends StatelessWidget {
       onTap: () => {}, // TODO: add link to drive
       child: Container(
         color: Colors.white,
-        height: 130,
+        height: 88,
         child: Row(
           children: [
             Expanded(
