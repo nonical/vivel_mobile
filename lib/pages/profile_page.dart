@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     child: Column(
                       children: [
-                        const ProfileHeader(username: "Tiana Rosser"),
+                        ProfileHeader(username: snapshot.data![0].userName),
                         ProfileDetails(
                             donationsCount: snapshot.data![0].donationCount,
                             litresDonated: snapshot.data![0].litresDonated,
