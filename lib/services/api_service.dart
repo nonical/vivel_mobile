@@ -48,6 +48,7 @@ class APIService {
     return response;
   }
 
+  // TODO: remove this temporary method after refactoring get method above
   static Future<dynamic> GetObject(String route) async {
     String baseUrl = 'http://vivel.azurewebsites.net/${route}';
 
