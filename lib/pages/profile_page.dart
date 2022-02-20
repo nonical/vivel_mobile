@@ -5,11 +5,11 @@ import 'package:vivel_mobile/models/user_details.dart';
 import 'package:vivel_mobile/services/badge_service.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
 import 'package:vivel_mobile/services/user_service.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/profile_navigation.dart';
-import 'package:vivel_mobile/widgets/Profile/profile_badges.dart';
-import 'package:vivel_mobile/widgets/Profile/profile_details.dart';
-import 'package:vivel_mobile/widgets/Profile/profile_donations.dart';
-import 'package:vivel_mobile/widgets/Profile/profile_header.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/profile_navigation.dart';
+import 'package:vivel_mobile/widgets/profile/profile_badges.dart';
+import 'package:vivel_mobile/widgets/profile/profile_details.dart';
+import 'package:vivel_mobile/widgets/profile/profile_donations.dart';
+import 'package:vivel_mobile/widgets/profile/profile_header.dart';
 
 class ProfilePage extends StatefulWidget {
   final String userId;

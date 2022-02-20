@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/wiki_navigation.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/wiki_navigation.dart';
 
 import '../models/faq.dart';
 import '../services/faq_service.dart';

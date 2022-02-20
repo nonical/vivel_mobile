@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
-import 'package:vivel_mobile/widgets/Home/home_header.dart';
+import 'package:vivel_mobile/widgets/home/home_header.dart';
 
 class HomeHeaderTwo extends StatelessWidget {
   final String nextDonation;

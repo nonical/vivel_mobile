@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
-import 'package:vivel_mobile/widgets/Wiki/question_form.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/wiki/question_form.dart';
 
 class QuestionPage extends StatelessWidget {
   final formKey = GlobalKey<FormState>();

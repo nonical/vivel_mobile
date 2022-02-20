@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/donation.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/donation_list_item.dart';
 
 class MyDonationsPage extends StatefulWidget {

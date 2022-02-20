@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/user_notification.dart';
 import 'package:vivel_mobile/services/user_notification_service.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/user_notification.dart';
 
 class NotificationsPage extends StatefulWidget {

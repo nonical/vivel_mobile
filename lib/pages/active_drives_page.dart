@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/services/drive_service.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/drive.dart';
 
 class ActiveDrivesPage extends StatefulWidget {

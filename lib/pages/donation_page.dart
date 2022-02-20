@@ -7,7 +7,7 @@ import 'package:vivel_mobile/models/donation.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/models/hospital.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/blood_report.dart';
 import 'package:vivel_mobile/widgets/card.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/badge.dart';
 import 'package:vivel_mobile/services/badge_service.dart';
 import 'package:vivel_mobile/widgets/badge.dart';
-import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 
 class BadgesPage extends StatefulWidget {
   final String userId;
