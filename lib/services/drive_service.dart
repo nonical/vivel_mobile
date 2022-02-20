@@ -11,4 +11,9 @@ class DriveService {
 
     return <Drive>[];
   }
+
+  static Future<Drive> getById(String driveId) async {
+    var donation = await APIService.getSingle('drive/$driveId', null);
+    return Drive.fromJson(donation!);
+  }
 }
