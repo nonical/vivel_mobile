@@ -18,22 +18,33 @@ class BloodReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CardContainer(
-      child: Column(children: [
-        Container(
-            alignment: Alignment.centerLeft,
-            child: const Text(
-              'Blood Report',
-              style: HEADING6,
-            )),
-        Container(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Laboratory examination of your blood sample.',
-              style: CAPTION1.copyWith(color: GRAY3),
-            )),
-        bar('Leukocyte', 'cmm', leukocyteCount, 15000),
-        bar('Erythrocyte', 'cmm', erythrocyteCount, 6000000),
-        bar('Platelet', 'ml', plateletCount, 400000)
+      height: 250,
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Column(
+          children: [
+            Container(
+              alignment: Alignment.centerLeft,
+              child: const Text(
+                'Blood Report',
+                style: HEADING6,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 10),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Laboratory examination of your blood sample.',
+                style: CAPTION1.copyWith(color: GRAY3),
+              ),
+            )
+          ],
+        ),
+        Column(children: [
+          bar('Leukocyte', 'cmm', leukocyteCount, 15000),
+          bar('Erythrocyte', 'cmm', erythrocyteCount, 6000000),
+          bar('Platelet', 'ml', plateletCount, 400000)
+        ])
       ]),
     );
   }
@@ -45,7 +56,8 @@ Widget bar(String countName, String unit, num amount, num maxAmount) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(children: [
-          const Text('• ', style: TextStyle(color: RED)),
+          const Text('• ',
+              style: TextStyle(color: RED, fontWeight: FontWeight.w900)),
           Text(
             '$countName Count',
             style: CAPTION1.copyWith(color: BLACK),
@@ -57,10 +69,12 @@ Widget bar(String countName, String unit, num amount, num maxAmount) {
         ),
       ],
     ),
-    LinearProgressIndicator(
-      value: amount / maxAmount,
-      color: RED,
-      backgroundColor: GRAY4,
-    )
+    Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        child: LinearProgressIndicator(
+          value: amount / maxAmount,
+          color: RED,
+          backgroundColor: GRAY4,
+        ))
   ]);
 }

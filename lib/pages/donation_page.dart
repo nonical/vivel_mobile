@@ -50,42 +50,52 @@ class _DonationPageState extends State<DonationPage> {
   Widget body(Tuple3<Donation, Drive, Hospital> data) {
     return Column(
       children: [
-        Column(
-          children: [
-            Text(
-              data.item3.name,
-              style: BIG_HEADER,
-            ),
-            Text(
-              DateFormat(DateFormat.YEAR_MONTH_DAY)
-                  .format(DateTime.parse(data.item2.date)),
-              style: HEADING4,
-            )
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
+        Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Column(
               children: [
-                Image.asset('assets/droplet.png'),
                 Text(
-                  data.item2.bloodType,
-                  style: HEADING3.copyWith(color: RED1),
+                  data.item3.name,
+                  style: BIG_HEADER,
+                ),
+                Text(
+                  DateFormat(DateFormat.YEAR_MONTH_DAY)
+                      .format(DateTime.parse(data.item2.date)),
+                  style: HEADING4,
                 )
               ],
-            ),
-            Column(
+            )),
+        Padding(
+            padding: const EdgeInsets.only(top: 75, bottom: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset('assets/funnel.png'),
-                Text(
-                  '${data.item1.amount} ml',
-                  style: HEADING3.copyWith(color: RED1),
+                Column(
+                  children: [
+                    Image.asset('assets/droplet.png'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Text(
+                        data.item2.bloodType,
+                        style: HEADING3.copyWith(color: RED1),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset('assets/funnel.png'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Text(
+                        '${data.item1.amount} ml',
+                        style: HEADING3.copyWith(color: RED1),
+                      ),
+                    )
+                  ],
                 )
               ],
-            )
-          ],
-        ),
+            )),
         BloodReport(
           erythrocyteCount: data.item1.erythrocyteCount,
           leukocyteCount: data.item1.leukocyteCount,
