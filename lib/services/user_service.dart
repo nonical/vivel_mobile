@@ -3,8 +3,8 @@ import 'api_service.dart';
 
 class UserService {
   static Future<UserDetails> getDetails(String userId) async {
-    final details = await APIService.GetObject('user/$userId/details');
+    final details = await APIService.getSingle('user/$userId/details', null);
 
-    return UserDetails.fromJson(details);
+    return UserDetails.fromJson(details!);
   }
 }
