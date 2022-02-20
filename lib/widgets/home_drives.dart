@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/pages/active_drives_page.dart';
@@ -53,7 +54,7 @@ class HomeDrives extends StatelessWidget {
                 DriveWidget(drive: drive),
                 const Divider(
                   height: 1,
-                  color: Colors.grey,
+                  color: GRAY4,
                 )
               ],
             );
