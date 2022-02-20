@@ -1,40 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/donation.dart';
+import 'package:vivel_mobile/pages/my_donations_page.dart';
 import 'package:vivel_mobile/widgets/donation_list_item.dart';
 
 class ProfileDonations extends StatelessWidget {
-  final donations = [
-    Donation(
-        donationId: "123",
-        scheduledAt: "123",
-        driveId: "123",
-        amount: 123,
-        status: "Approved",
-        erythrocyteCount: 0,
-        leukocyteCount: 0,
-        plateletCount: 0,
-        note: ""),
-    Donation(
-        donationId: "123",
-        scheduledAt: "123",
-        driveId: "123",
-        amount: 123,
-        status: "Approved",
-        erythrocyteCount: 0,
-        leukocyteCount: 0,
-        plateletCount: 0,
-        note: ""),
-    Donation(
-        donationId: "123",
-        scheduledAt: "123",
-        driveId: "123",
-        amount: 123,
-        status: "Approved",
-        erythrocyteCount: 0,
-        leukocyteCount: 0,
-        plateletCount: 0,
-        note: "")
-  ];
+  final String userId;
+  final List<Donation> donations;
+
+  const ProfileDonations(
+      {Key? key, required this.donations, required this.userId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +26,23 @@ class ProfileDonations extends StatelessWidget {
               )
             ]),
             Column(
-              children: [Text("Show all")],
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyDonationsPage(userId: userId),
+                        ));
+                  },
+                  child: Text(
+                    "Show all",
+                    style: TextStyle(
+                        color: Color.fromRGBO(255, 100, 124, 100),
+                        decoration: TextDecoration.underline),
+                  ),
+                )
+              ],
             )
           ],
         ),
