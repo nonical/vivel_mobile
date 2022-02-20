@@ -8,7 +8,7 @@ import 'package:vivel_mobile/widgets/drive.dart';
 class HomeDrives extends StatelessWidget {
   final List<Drive> drives;
 
-  HomeDrives({Key? key, required this.drives}) : super(key: key);
+  const HomeDrives({Key? key, required this.drives}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +32,13 @@ class HomeDrives extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ActiveDrivesPage(),
+                            builder: (context) => const ActiveDrivesPage(),
                           ));
                     },
                     child: const Text(
                       "Show all",
                       style: TextStyle(
-                          color: Color.fromRGBO(255, 100, 124, 100),
-                          decoration: TextDecoration.underline),
+                          color: RED, decoration: TextDecoration.underline),
                     ),
                   )
                 ],

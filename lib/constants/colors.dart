@@ -11,3 +11,5 @@ const RED1 = Color.fromRGBO(255, 152, 168, 1);
 
 const GRAY3 = Color.fromRGBO(153, 153, 153, 1);
 const GRAY4 = Color.fromRGBO(228, 228, 228, 1);
+
+const ORANGE = Color.fromRGBO(242, 153, 74, 100);

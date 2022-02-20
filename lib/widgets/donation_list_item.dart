@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/donation.dart';
 
 class DonationListItemWidget extends StatelessWidget {
@@ -8,17 +10,17 @@ class DonationListItemWidget extends StatelessWidget {
       : super(key: key);
 
   Widget statusText(String status) {
-    Color textColor = Color.fromRGBO(153, 153, 153, 100);
+    Color textColor = GRAY3;
 
     switch (status) {
       case "Approved":
-        textColor = const Color.fromRGBO(0, 196, 140, 100);
+        textColor = GREEN;
         break;
       case "Rejected":
-        textColor = const Color.fromRGBO(255, 100, 124, 100);
+        textColor = RED;
         break;
       case "Scheduled":
-        textColor = const Color.fromRGBO(242, 153, 74, 100);
+        textColor = ORANGE;
         break;
     }
     return (Text(status, style: TextStyle(color: textColor)));
@@ -42,8 +44,7 @@ class DonationListItemWidget extends StatelessWidget {
                       height: 60,
                       width: 60,
                       decoration: const BoxDecoration(
-                          color: Color.fromRGBO(255, 100, 124, 100),
-                          shape: BoxShape.circle),
+                          color: RED, shape: BoxShape.circle),
                       child: Center(child: Image.asset('assets/activity.png')),
                     )
                   ],
@@ -58,9 +59,7 @@ class DonationListItemWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10, right: 10),
-                          child: Text("DZ Hospital",
-                              style: const TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w500)),
+                          child: Text("DZ Hospital", style: HEADING5),
                         ),
                       ),
                     ],

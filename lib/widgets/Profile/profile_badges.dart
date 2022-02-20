@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/badge.dart';
 import 'package:vivel_mobile/pages/badges_page.dart';
 import 'dart:convert';
@@ -41,7 +43,7 @@ class ProfileBadges extends StatelessWidget {
             Column(children: const [
               Text(
                 "Latest badges",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                style: HEADING5,
               )
             ]),
             Column(
@@ -57,8 +59,7 @@ class ProfileBadges extends StatelessWidget {
                   child: const Text(
                     "Show all",
                     style: TextStyle(
-                        color: Color.fromRGBO(255, 100, 124, 100),
-                        decoration: TextDecoration.underline),
+                        color: RED, decoration: TextDecoration.underline),
                   ),
                 )
               ],

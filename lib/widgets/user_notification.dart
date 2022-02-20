@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/user_notification.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -36,9 +37,7 @@ class UserNotificationWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20, right: 10),
-                          child: Text(notification.title,
-                              style: const TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w500)),
+                          child: Text(notification.title, style: HEADING5),
                         ),
                       ),
                     ],

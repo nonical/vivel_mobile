@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/donation.dart';
 import 'package:vivel_mobile/pages/my_donations_page.dart';
 import 'package:vivel_mobile/widgets/donation_list_item.dart';
@@ -22,7 +24,7 @@ class ProfileDonations extends StatelessWidget {
             Column(children: [
               const Text(
                 "Latest donations",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                style: HEADING5,
               )
             ]),
             Column(
@@ -35,11 +37,10 @@ class ProfileDonations extends StatelessWidget {
                           builder: (context) => MyDonationsPage(userId: userId),
                         ));
                   },
-                  child: Text(
+                  child: const Text(
                     "Show all",
                     style: TextStyle(
-                        color: Color.fromRGBO(255, 100, 124, 100),
-                        decoration: TextDecoration.underline),
+                        color: RED, decoration: TextDecoration.underline),
                   ),
                 )
               ],
@@ -54,7 +55,7 @@ class ProfileDonations extends StatelessWidget {
               DonationListItemWidget(donation: donation),
               const Divider(
                 height: 1,
-                color: Colors.grey,
+                color: GRAY4,
               )
             ],
           );

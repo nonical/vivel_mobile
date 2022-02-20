@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/faq.dart';
 import 'package:vivel_mobile/services/faq_service.dart';
 import 'package:vivel_mobile/utils/snack_bar.dart';
+import 'package:vivel_mobile/widgets/submit_button.dart';
 
-import '../submit_button.dart';
+class QuestionFormWidget extends StatefulWidget {
+  @override
+  State<QuestionFormWidget> createState() => _QuestionFormWidgetState();
+}
 
-class QuestionFormWidget extends StatelessWidget {
+class _QuestionFormWidgetState extends State<QuestionFormWidget> {
   final formKey = GlobalKey<FormState>();
+
   TextEditingController questionEditingController = TextEditingController();
 
   void submitForm(BuildContext context) async {

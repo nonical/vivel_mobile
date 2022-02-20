@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:intl/intl.dart';
 
@@ -25,8 +27,7 @@ class DriveWidget extends StatelessWidget {
                       height: 60,
                       width: 60,
                       decoration: const BoxDecoration(
-                          color: Color.fromRGBO(255, 100, 124, 100),
-                          shape: BoxShape.circle),
+                          color: RED, shape: BoxShape.circle),
                       child: Center(
                           child: Text(
                         drive.bloodType,
@@ -46,9 +47,7 @@ class DriveWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10, right: 10),
-                          child: Text("DZ Hospital",
-                              style: const TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w500)),
+                          child: Text("DZ Hospital", style: HEADING5),
                         ),
                       ),
                     ],

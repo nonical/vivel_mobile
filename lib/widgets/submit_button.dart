@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
 
 class SubmitButton extends StatelessWidget {
   final String text;
@@ -11,8 +12,7 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-              const Color.fromRGBO(255, 100, 124, 100)),
+          backgroundColor: MaterialStateProperty.all(RED),
           minimumSize: MaterialStateProperty.all(const Size(0, 55)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(

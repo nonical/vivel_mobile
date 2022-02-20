@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/text_styles.dart';
 
 class ProfileDetails extends StatelessWidget {
   final int donationsCount;
@@ -31,7 +32,7 @@ class ProfileDetails extends StatelessWidget {
       children: [
         Text(
           text,
-          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+          style: HEADING5,
         ),
       ],
     );
