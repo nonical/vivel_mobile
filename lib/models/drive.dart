@@ -30,6 +30,6 @@ class Drive {
         status: json["status"],
         urgency: json["urgency"],
         createdAt: json["createdAt"],
-        updatedAt: json["updatedAt"]);
+        updatedAt: json["updatedAt"] ?? "");
   }
 }
