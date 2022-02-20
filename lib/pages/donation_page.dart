@@ -5,6 +5,7 @@ import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/donation.dart';
 import 'package:vivel_mobile/models/drive.dart';
+import 'package:vivel_mobile/models/hospital.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
 import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/blood_report.dart';
@@ -19,13 +20,12 @@ class DonationPage extends StatefulWidget {
 }
 
 class _DonationPageState extends State<DonationPage> {
-  late Future<Tuple2<Donation, Drive>> donation;
-  // late Future<Hospital> hospital;
+  late Future<Tuple3<Donation, Drive, Hospital>> donation;
 
   @override
   void initState() {
     super.initState();
-    donation = DonationService.getByIdWithDrive(widget.donationId);
+    donation = DonationService.getByIdWithDriveAndHospital(widget.donationId);
   }
 
   @override
@@ -33,7 +33,7 @@ class _DonationPageState extends State<DonationPage> {
     return Scaffold(
       appBar: BackNavigation('Donation'),
       body: SizedBox.expand(
-          child: FutureBuilder<Tuple2<Donation, Drive>>(
+          child: FutureBuilder<Tuple3<Donation, Drive, Hospital>>(
               future: donation,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
@@ -47,13 +47,13 @@ class _DonationPageState extends State<DonationPage> {
     );
   }
 
-  Widget body(Tuple2<Donation, Drive> data) {
+  Widget body(Tuple3<Donation, Drive, Hospital> data) {
     return Column(
       children: [
         Column(
           children: [
-            const Text(
-              'DZ Cazin',
+            Text(
+              data.item3.name,
               style: BIG_HEADER,
             ),
             Text(
