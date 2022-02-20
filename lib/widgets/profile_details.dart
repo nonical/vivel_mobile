@@ -43,8 +43,10 @@ class ProfileDetails extends StatelessWidget {
       height: 100,
       decoration: const BoxDecoration(
         border: Border(
-            top: BorderSide(width: 1, color: Colors.grey),
-            bottom: BorderSide(width: 1, color: Colors.grey)),
+            top:
+                BorderSide(width: 1, color: Color.fromRGBO(228, 228, 228, 0.6)),
+            bottom: BorderSide(
+                width: 1, color: Color.fromRGBO(228, 228, 228, 0.6))),
       ),
       child: Padding(
         padding: const EdgeInsets.only(top: 30),
