@@ -9,6 +9,7 @@ import 'package:vivel_mobile/models/hospital.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
 import 'package:vivel_mobile/widgets/NavigationBar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/blood_report.dart';
+import 'package:vivel_mobile/widgets/card.dart';
 
 class DonationPage extends StatefulWidget {
   final String donationId;
@@ -60,8 +61,13 @@ class _DonationPageState extends State<DonationPage> {
                 ),
                 Text(
                   DateFormat(DateFormat.YEAR_MONTH_DAY)
-                      .format(DateTime.parse(data.item2.date)),
+                      .format(DateTime.parse(data.item1.createdAt)),
                   style: HEADING4,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Status: ${data.item1.status}',
+                      style: CAPTION1.copyWith(color: GRAY3)),
                 )
               ],
             )),
@@ -96,12 +102,45 @@ class _DonationPageState extends State<DonationPage> {
                 )
               ],
             )),
-        BloodReport(
-          erythrocyteCount: data.item1.erythrocyteCount,
-          leukocyteCount: data.item1.leukocyteCount,
-          plateletCount: data.item1.plateletCount,
-        )
+        conditionalCard(data.item1)
       ],
     );
   }
+}
+
+Widget conditionalCard(Donation donation) {
+  if (donation.status == 'Approved') {
+    return BloodReport(
+        leukocyteCount: donation.leukocyteCount,
+        erythrocyteCount: donation.erythrocyteCount,
+        plateletCount: donation.plateletCount);
+  }
+
+  String message;
+
+  // TODO: possibly move these messages to a seperate module (e.g. templates/messages.dart)
+  switch (donation.status) {
+    case 'Pending':
+      message = 'Your donation will be scheduled by hospital staff soon.';
+      break;
+    case 'Scheduled':
+      message =
+          'Your donation is scheduled for:\n${DateFormat(DateFormat.YEAR_MONTH_DAY).format(DateTime.parse(donation.scheduledAt))} at ${DateFormat(DateFormat.HOUR_MINUTE).format(DateTime.parse(donation.scheduledAt))}';
+      break;
+    case 'Rejected':
+      message = 'Your donation has been rejected:\n${donation.note}';
+      break;
+    default:
+      message = '';
+  }
+
+  return CardContainer(
+      height: 250,
+      child: Center(
+        child: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: HEADING6,
+        ),
+      ));
 }
