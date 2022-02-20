@@ -85,7 +85,9 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ProfilePage()),
+                          builder: (context) => const ProfilePage(
+                                userId: "49649a15-21a8-4048-abb5-2b17f5cb4efa",
+                              )),
                     )
                   })
         ]));
