@@ -42,7 +42,7 @@ class ProfileHeader extends StatelessWidget {
                       child: Row(children: const [
                         Expanded(
                           child: Text(
-                              "Ihello world its a boi alomany from sedewdn"),
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing"),
                         ),
                       ]),
                     ),
