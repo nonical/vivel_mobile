@@ -3,7 +3,7 @@ import 'package:vivel_mobile/widgets/NavigationBar/wiki_navigation.dart';
 
 import '../models/faq.dart';
 import '../services/faq_service.dart';
-import '../widgets/faq.dart';
+import '../widgets/Wiki/faq.dart';
 
 class WikiPage extends StatefulWidget {
   const WikiPage({Key? key}) : super(key: key);

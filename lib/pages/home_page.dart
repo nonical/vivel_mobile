@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/services/drive_service.dart';
 import 'package:vivel_mobile/widgets/NavigationBar/home_navigation.dart';
-import 'package:vivel_mobile/widgets/home_drives.dart';
-import 'package:vivel_mobile/widgets/home_header_one.dart';
-import 'package:vivel_mobile/widgets/home_header_two.dart';
+import 'package:vivel_mobile/widgets/Home/home_drives.dart';
+import 'package:vivel_mobile/widgets/Home/home_header_one.dart';
+import 'package:vivel_mobile/widgets/Home/home_header_two.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
