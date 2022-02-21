@@ -22,7 +22,7 @@ class Drive {
       required this.urgency,
       required this.createdAt,
       required this.updatedAt,
-      required this.hospital});
+      this.hospital});
 
   factory Drive.fromJson(Map<String, dynamic> json) {
     return Drive(
@@ -35,6 +35,8 @@ class Drive {
         urgency: json["urgency"],
         createdAt: json["createdAt"],
         updatedAt: json["updatedAt"] ?? "",
-        hospital: Hospital.fromJson(json["hospital"]));
+        hospital: json["hospital"] != null
+            ? Hospital.fromJson(json["hospital"])
+            : null);
   }
 }
