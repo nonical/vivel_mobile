@@ -1,3 +1,5 @@
+import 'package:vivel_mobile/models/hospital.dart';
+
 class Drive {
   final String driveId;
   final String hospitalId;
@@ -8,6 +10,7 @@ class Drive {
   final bool urgency;
   final String createdAt;
   final String updatedAt;
+  final Hospital? hospital;
 
   Drive(
       {required this.driveId,
@@ -18,7 +21,8 @@ class Drive {
       required this.status,
       required this.urgency,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      this.hospital});
 
   factory Drive.fromJson(Map<String, dynamic> json) {
     return Drive(
@@ -30,6 +34,9 @@ class Drive {
         status: json["status"],
         urgency: json["urgency"],
         createdAt: json["createdAt"],
-        updatedAt: json["updatedAt"] ?? "");
+        updatedAt: json["updatedAt"] ?? "",
+        hospital: json["hospital"] != null
+            ? Hospital.fromJson(json["hospital"])
+            : null);
   }
 }
