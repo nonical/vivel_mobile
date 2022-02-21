@@ -57,7 +57,7 @@ class DriveWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Text(DateFormat('MMMM dd, y')
+                          child: Text(DateFormat(DateFormat.YEAR_MONTH_DAY)
                               .format(DateTime.parse(drive.date))),
                         ),
                       ),

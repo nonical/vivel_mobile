@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
+import 'package:vivel_mobile/models/user_details.dart';
 import 'package:vivel_mobile/widgets/home/home_header.dart';
 
 class HomeHeaderTwo extends StatelessWidget {
-  final String nextDonation;
+  final UserDetails userDetails;
 
-  const HomeHeaderTwo({Key? key, required this.nextDonation}) : super(key: key);
+  const HomeHeaderTwo({Key? key, required this.userDetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +46,11 @@ class HomeHeaderTwo extends StatelessWidget {
             Row(children: [
               Expanded(
                   child: Center(
-                child:
-                    Text(nextDonation, style: HEADING3.copyWith(color: GREEN)),
+                child: Text(
+                    DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY).format(
+                        DateTime.parse(userDetails.lastDonation)
+                            .add(const Duration(days: 90))),
+                    style: HEADING3.copyWith(color: GREEN)),
               ))
             ])
           ],

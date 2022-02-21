@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/models/drive.dart';
+import 'package:vivel_mobile/models/user_details.dart';
 import 'package:vivel_mobile/services/drive_service.dart';
+import 'package:vivel_mobile/services/user_service.dart';
 import 'package:vivel_mobile/widgets/navigation_bar/home_navigation.dart';
 import 'package:vivel_mobile/widgets/home/home_drives.dart';
 import 'package:vivel_mobile/widgets/home/home_header_one.dart';
 import 'package:vivel_mobile/widgets/home/home_header_two.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String userId;
+
+  const HomePage({Key? key, required this.userId}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -15,11 +19,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<List<Drive>> drives;
+  late Future<UserDetails> userDetails;
 
   @override
   void initState() {
     super.initState();
-    // TODO: fetch user details about donations and donation dates
+
+    userDetails = UserService.getDetails(widget.userId);
     drives = DriveService.get(); // TODO: fetch only 3-4 active drives
   }
 
@@ -28,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: HomeNavigation(context),
         body: FutureBuilder(
-          future: Future.wait([drives]),
+          future: Future.wait([drives, userDetails]),
           builder:
               (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
             if (snapshot.hasData) {
@@ -41,14 +47,12 @@ class _HomePageState extends State<HomePage> {
                       child: Column(children: [
                         Column(
                           children: [
-                            HomeHeaderOne(
-                              totalDonations: 12,
-                              lastDonation: "2020-10-03",
-                            ),
+                            HomeHeaderOne(userDetails: snapshot.data![1]),
                             Padding(
                               padding:
                                   const EdgeInsets.only(top: 30, bottom: 30),
-                              child: HomeHeaderTwo(nextDonation: "2020-12-03"),
+                              child:
+                                  HomeHeaderTwo(userDetails: snapshot.data![1]),
                             ),
                           ],
                         ),
