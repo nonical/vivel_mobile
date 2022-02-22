@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/donation.dart';
+import 'package:vivel_mobile/pages/donation_page.dart';
 
 class DonationListItemWidget extends StatelessWidget {
   final Donation donation;
@@ -29,7 +30,14 @@ class DonationListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {}, // TODO: add link to donation page
+      onTap: () => {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  DonationPage(donationId: donation.donationId),
+            ))
+      },
       child: Container(
         color: Colors.white,
         height: 88,

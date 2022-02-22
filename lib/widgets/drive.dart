@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/drive.dart';
-import 'package:intl/intl.dart';
+import 'package:vivel_mobile/pages/drive_page.dart';
 
 class DriveWidget extends StatelessWidget {
   final Drive drive;
@@ -12,7 +13,15 @@ class DriveWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {}, // TODO: add link to drive
+      onTap: () => {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DrivePage(
+                driveId: drive.driveId,
+              ),
+            ))
+      },
       child: Container(
         color: Colors.white,
         height: 88,
