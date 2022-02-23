@@ -5,6 +5,7 @@ import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/services/drive_service.dart';
+import 'package:vivel_mobile/utils/map_launcher.dart';
 import 'package:vivel_mobile/utils/mapbox.dart';
 import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/submit_button.dart';
@@ -55,9 +56,15 @@ Widget body(Drive drive) {
     child: Column(
       children: [
         Center(
-            child: Image(
-                image: getStaticImage(
-                    drive.hospital!.longitude, drive.hospital!.latitude))),
+            child: GestureDetector(
+          child: Image(
+              image: getStaticImage(
+                  drive.hospital!.longitude, drive.hospital!.latitude)),
+          onTap: () {
+            openLocationInMaps(drive.hospital!.longitude,
+                drive.hospital!.latitude, drive.hospital!.name);
+          },
+        )),
         Column(
           children: [
             Padding(
