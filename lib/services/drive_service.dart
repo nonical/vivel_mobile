@@ -1,12 +1,19 @@
+import 'package:vivel_mobile/utils/location.dart';
+
 import '../models/drive.dart';
 import 'api_service.dart';
 
 class DriveService {
   static Future<List<Drive>> get() async {
-    var notifications = await APIService.Get('drive', {"status": "Open"});
+    var position = await getPosition();
+    var drives = await APIService.Get('drive', {
+      "status": "Open",
+      "latitude": position.latitude.toString(),
+      "longitude": position.longitude.toString()
+    });
 
-    if (notifications != null) {
-      return notifications.map((x) => Drive.fromJson(x)).toList();
+    if (drives != null) {
+      return drives.map((x) => Drive.fromJson(x)).toList();
     }
 
     return <Drive>[];
