@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String username;
+  final bool verified;
 
-  const ProfileHeader({Key? key, required this.username}) : super(key: key);
+  const ProfileHeader(
+      {Key? key, required this.username, required this.verified})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String verifiedDescription = "Your blood type has been verified";
+    String notVerifiedDescription = "Your blood type is yet to be verified";
+
     return SizedBox(
         height: 150,
         child: Row(
@@ -42,10 +48,11 @@ class ProfileHeader extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 25),
-                      child: Row(children: const [
+                      child: Row(children: [
                         Expanded(
-                          child: Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing"),
+                          child: Text(verified
+                              ? verifiedDescription
+                              : notVerifiedDescription),
                         ),
                       ]),
                     ),
