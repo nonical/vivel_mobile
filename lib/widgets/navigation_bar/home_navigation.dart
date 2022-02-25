@@ -4,7 +4,7 @@ import 'package:vivel_mobile/pages/profile_page.dart';
 import 'package:vivel_mobile/pages/user_notifications_page.dart';
 
 class HomeNavigation extends AppBar {
-  HomeNavigation(BuildContext context, {Key? key})
+  HomeNavigation(BuildContext context, {Key? key, required String userId})
       : super(
           key: key,
           title: const Text("Home"),
@@ -16,9 +16,8 @@ class HomeNavigation extends AppBar {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const NotificationsPage(
-                                  userId:
-                                      '49649a15-21a8-4048-abb5-2b17f5cb4efa',
+                            builder: (context) => NotificationsPage(
+                                  userId: userId,
                                 )))
                   },
               icon: Image.asset('assets/bell.png')),
@@ -28,9 +27,8 @@ class HomeNavigation extends AppBar {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ProfilePage(
-                                    userId:
-                                        '49649a15-21a8-4048-abb5-2b17f5cb4efa',
+                              builder: (context) => ProfilePage(
+                                    userId: userId,
                                   )))
                     },
                 icon: Image.asset('assets/user.png'))

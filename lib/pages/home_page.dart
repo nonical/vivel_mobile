@@ -32,7 +32,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeNavigation(context),
+        appBar: HomeNavigation(
+          context,
+          userId: widget.userId,
+        ),
         body: FutureBuilder(
           future: Future.wait([drives, userDetails]),
           builder:
