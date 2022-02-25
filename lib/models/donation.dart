@@ -3,7 +3,7 @@ class Donation {
   final String userId;
   final String? userName;
   final String driveId;
-  final String scheduledAt;
+  final String? scheduledAt;
   final int amount;
   final String status;
   final String note;
@@ -11,14 +11,14 @@ class Donation {
   final int erythrocyteCount;
   final int plateletCount;
   final String createdAt;
-  final String updatedAt;
+  final String? updatedAt;
   final String? hospitalName;
   final String? bloodType;
 
   Donation(
       {required this.donationId,
       required this.userId,
-      this.userName,
+      required this.userName,
       required this.driveId,
       required this.scheduledAt,
       required this.amount,
@@ -29,8 +29,8 @@ class Donation {
       required this.plateletCount,
       required this.createdAt,
       required this.updatedAt,
-      this.hospitalName,
-      this.bloodType});
+      required this.hospitalName,
+      required this.bloodType});
 
   factory Donation.fromJson(Map<String, dynamic> json) {
     return Donation(
