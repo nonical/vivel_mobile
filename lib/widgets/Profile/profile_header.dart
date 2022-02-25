@@ -14,11 +14,15 @@ class ProfileHeader extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(255, 100, 124, 100),
-                      shape: BoxShape.circle)),
+                height: 70,
+                width: 70,
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(255, 100, 124, 100),
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/profile-picture.png'))),
+              ),
             ),
             Expanded(
               flex: 8,
