@@ -4,7 +4,8 @@ import '../models/drive.dart';
 import 'api_service.dart';
 
 class DriveService {
-  static Future<List<Drive>> get({bool paginate = false, int? pageSize}) async {
+  static Future<List<Drive>> get(
+      {bool paginate = false, int pageSize = 3}) async {
     var position = await getPosition();
     var drives = await APIService.Get('drive', {
       "status": "Open",
