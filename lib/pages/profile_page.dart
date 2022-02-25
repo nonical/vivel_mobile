@@ -39,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: ProfileNavigation(),
+        appBar: ProfileNavigation(context),
         body: FutureBuilder(
           future: Future.wait([details, badges, donations]),
           builder:

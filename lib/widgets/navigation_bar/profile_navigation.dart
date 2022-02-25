@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vivel_mobile/constants/colors.dart';
+import 'package:vivel_mobile/pages/wiki_page.dart';
 
 class ProfileNavigation extends AppBar {
-  ProfileNavigation({Key? key})
+  ProfileNavigation(BuildContext context, {Key? key})
       : super(
           key: key,
           title: const Text("Profile"),
@@ -15,8 +16,13 @@ class ProfileNavigation extends AppBar {
           ),
           actions: [
             IconButton(
-                onPressed: () => {},
-                icon: Image.asset('assets/more-horizontal.png'))
+                onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const WikiPage()))
+                    },
+                icon: Image.asset('assets/help-circle.png'))
           ],
         );
 }
