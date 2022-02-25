@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/user_notification.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:vivel_mobile/pages/donation_page.dart';
+import 'package:vivel_mobile/pages/drive_page.dart';
 
 class UserNotificationWidget extends StatelessWidget {
   final UserNotification notification;
@@ -9,10 +11,28 @@ class UserNotificationWidget extends StatelessWidget {
   const UserNotificationWidget({Key? key, required this.notification})
       : super(key: key);
 
+  Widget getLinkable() {
+    if (notification.linkType == "Drive") {
+      return DrivePage(
+        driveId: notification.linkId,
+      );
+    } else {
+      return DonationPage(
+        donationId: notification.linkId,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {}, // TODO: add link to notification linkType
+      onTap: () => {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => getLinkable(),
+            ))
+      },
       child: Container(
         color: Colors.white,
         height: 130,
