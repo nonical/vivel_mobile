@@ -29,9 +29,10 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
 
     details = UserService.getDetails(widget.userId);
-    badges = BadgeService.get(widget.userId); // TODO: fetch only 2 badges
-    donations =
-        DonationService.get(widget.userId); // TODO: fetch only 2-3 donations
+    badges =
+        BadgeService.get(widget.userId, {"paginate": "true", "pageSize": "2"});
+    donations = DonationService.get(
+        widget.userId, {"paginate": "true", "pageSize": "3"});
   }
 
   @override

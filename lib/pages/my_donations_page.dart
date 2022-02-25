@@ -19,7 +19,7 @@ class _MyDonationsPageState extends State<MyDonationsPage> {
   @override
   void initState() {
     super.initState();
-    donations = DonationService.get(widget.userId);
+    donations = DonationService.get(widget.userId, null);
   }
 
   @override

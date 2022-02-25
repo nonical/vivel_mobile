@@ -21,7 +21,7 @@ class _BadgesPageState extends State<BadgesPage> {
   @override
   void initState() {
     super.initState();
-    badges = BadgeService.get(widget.userId);
+    badges = BadgeService.get(widget.userId, null);
   }
 
   @override
