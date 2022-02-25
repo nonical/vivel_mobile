@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class APIService {
@@ -23,7 +24,7 @@ class APIService {
   static Future<Map<String, dynamic>?> getSingle(
       String route, dynamic object) async {
     String queryString = Uri(queryParameters: object).query;
-    String baseUrl = 'http://vivel.azurewebsites.net/${route}';
+    String baseUrl = '${dotenv.env['API_URL']}/$route';
 
     if (object != null) {
       baseUrl = '$baseUrl?$queryString';
@@ -39,7 +40,7 @@ class APIService {
   }
 
   static Future<dynamic?> Post(String route, dynamic object) async {
-    String baseUrl = 'https://vivel.azurewebsites.net/$route/';
+    String baseUrl = '${dotenv.env['API_URL']}/$route';
 
     final response = await http.post(Uri.parse(baseUrl),
         headers: {'Content-Type': 'application/json'},
