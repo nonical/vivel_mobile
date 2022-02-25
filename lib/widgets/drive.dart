@@ -56,7 +56,7 @@ class DriveWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10, right: 10),
-                          child: Text("DZ Hospital", style: HEADING5),
+                          child: Text(drive.hospital!.name, style: HEADING5),
                         ),
                       ),
                     ],
@@ -70,6 +70,16 @@ class DriveWidget extends StatelessWidget {
                               .format(DateTime.parse(drive.date))),
                         ),
                       ),
+                      if (drive.urgency == true)
+                        const Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 10),
+                            child: Text(
+                              "URGENT",
+                              style: TextStyle(color: RED),
+                            ),
+                          ),
+                        ),
                     ],
                   )
                 ],
