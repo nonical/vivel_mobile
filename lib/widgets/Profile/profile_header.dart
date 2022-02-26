@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String username;
@@ -50,10 +51,19 @@ class ProfileHeader extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 20, right: 25),
                       child: Row(children: [
                         Expanded(
+                          flex: 9,
                           child: Text(verified
                               ? verifiedDescription
                               : notVerifiedDescription),
                         ),
+                        if (verified)
+                          Expanded(
+                            flex: 1,
+                            child: SvgPicture.asset(
+                              "assets/verified.svg",
+                              height: 20,
+                            ),
+                          )
                       ]),
                     ),
                   ]),
