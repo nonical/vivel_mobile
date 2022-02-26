@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String username;
+  final bool verified;
 
-  const ProfileHeader({Key? key, required this.username}) : super(key: key);
+  const ProfileHeader(
+      {Key? key, required this.username, required this.verified})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String verifiedDescription = "Your blood type has been verified";
+    String notVerifiedDescription = "Your blood type is yet to be verified";
+
     return SizedBox(
         height: 150,
         child: Row(
@@ -14,11 +21,15 @@ class ProfileHeader extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(255, 100, 124, 100),
-                      shape: BoxShape.circle)),
+                height: 70,
+                width: 70,
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(255, 100, 124, 100),
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/profile-picture.png'))),
+              ),
             ),
             Expanded(
               flex: 8,
@@ -38,11 +49,21 @@ class ProfileHeader extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 25),
-                      child: Row(children: const [
+                      child: Row(children: [
                         Expanded(
-                          child: Text(
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing"),
+                          flex: 9,
+                          child: Text(verified
+                              ? verifiedDescription
+                              : notVerifiedDescription),
                         ),
+                        if (verified)
+                          Expanded(
+                            flex: 1,
+                            child: SvgPicture.asset(
+                              "assets/verified.svg",
+                              height: 20,
+                            ),
+                          )
                       ]),
                     ),
                   ]),

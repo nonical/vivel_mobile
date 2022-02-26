@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
@@ -56,7 +57,7 @@ class DriveWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10, right: 10),
-                          child: Text("DZ Hospital", style: HEADING5),
+                          child: Text(drive.hospital!.name, style: HEADING5),
                         ),
                       ),
                     ],
@@ -70,6 +71,16 @@ class DriveWidget extends StatelessWidget {
                               .format(DateTime.parse(drive.date))),
                         ),
                       ),
+                      if (drive.urgency == true)
+                        const Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 10),
+                            child: Text(
+                              "URGENT",
+                              style: TextStyle(color: RED),
+                            ),
+                          ),
+                        ),
                     ],
                   )
                 ],
@@ -80,7 +91,7 @@ class DriveWidget extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/chevron-right.png'),
+                  SvgPicture.asset('assets/chevron-right.svg'),
                 ],
               ),
             ),

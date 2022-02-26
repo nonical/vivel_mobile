@@ -20,7 +20,7 @@ class HomeNavigation extends AppBar {
                                   userId: userId,
                                 )))
                   },
-              icon: Image.asset('assets/bell.png')),
+              icon: SvgPicture.asset('assets/bell.svg')),
           actions: [
             IconButton(
                 onPressed: () => {
@@ -31,7 +31,7 @@ class HomeNavigation extends AppBar {
                                     userId: userId,
                                   )))
                     },
-                icon: Image.asset('assets/user.png'))
+                icon: SvgPicture.asset('assets/user.svg'))
           ],
         );
 }

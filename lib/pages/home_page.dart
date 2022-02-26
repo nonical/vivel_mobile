@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     userDetails = UserService.getDetails(widget.userId);
-    drives = DriveService.get(); // TODO: fetch only 3-4 active drives
+    drives = DriveService.get(paginate: true, pageSize: 4);
   }
 
   @override

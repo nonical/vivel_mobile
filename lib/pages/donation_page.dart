@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:tuple/tuple.dart';
 import 'package:vivel_mobile/constants/colors.dart';
@@ -78,7 +79,7 @@ class _DonationPageState extends State<DonationPage> {
               children: [
                 Column(
                   children: [
-                    Image.asset('assets/droplet.png'),
+                    SvgPicture.asset('assets/droplet.svg'),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(
@@ -90,7 +91,7 @@ class _DonationPageState extends State<DonationPage> {
                 ),
                 Column(
                   children: [
-                    Image.asset('assets/funnel.png'),
+                    SvgPicture.asset('assets/funnel.svg'),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(

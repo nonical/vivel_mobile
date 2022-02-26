@@ -29,16 +29,17 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
 
     details = UserService.getDetails(widget.userId);
-    badges = BadgeService.get(widget.userId); // TODO: fetch only 2 badges
-    donations =
-        DonationService.get(widget.userId); // TODO: fetch only 2-3 donations
+    badges =
+        BadgeService.get(widget.userId, {"paginate": "true", "pageSize": "2"});
+    donations = DonationService.get(
+        widget.userId, {"paginate": "true", "pageSize": "3"});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: ProfileNavigation(),
+        appBar: ProfileNavigation(context),
         body: FutureBuilder(
           future: Future.wait([details, badges, donations]),
           builder:
@@ -50,7 +51,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: const EdgeInsets.only(left: 30, right: 30),
                     child: Column(
                       children: [
-                        ProfileHeader(username: snapshot.data![0].userName),
+                        ProfileHeader(
+                            username: snapshot.data![0].userName,
+                            verified: snapshot.data![0].verified),
                         ProfileDetails(
                             donationsCount: snapshot.data![0].donationCount,
                             litresDonated: snapshot.data![0].litresDonated,

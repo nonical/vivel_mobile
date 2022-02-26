@@ -8,8 +8,8 @@ import 'package:vivel_mobile/services/drive_service.dart';
 import 'package:vivel_mobile/services/hospital_service.dart';
 
 class DonationService {
-  static Future<List<Donation>> get(String userId) async {
-    var donations = await APIService.Get('user/$userId/donations', null);
+  static Future<List<Donation>> get(String userId, dynamic object) async {
+    var donations = await APIService.Get('user/$userId/donations', object);
 
     if (donations != null) {
       return donations.map((x) => Donation.fromJson(x)).toList();

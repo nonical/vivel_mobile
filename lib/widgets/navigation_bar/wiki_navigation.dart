@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/pages/question_page.dart';
 
@@ -23,7 +24,7 @@ class WikiNavigation extends AppBar {
                             builder: (context) => QuestionPage(),
                           )),
                     },
-                icon: Image.asset('assets/plus.png'))
+                icon: SvgPicture.asset('assets/plus.svg'))
           ],
         );
 }

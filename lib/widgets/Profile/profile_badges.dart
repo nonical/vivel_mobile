@@ -16,7 +16,7 @@ class ProfileBadges extends StatelessWidget {
   Widget sizedBox(Widget child) {
     return SizedBox(
       height: 150,
-      width: 150,
+      width: 170,
       child: child,
     );
   }
