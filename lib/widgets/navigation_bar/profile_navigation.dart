@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/pages/wiki_page.dart';
 
@@ -22,7 +23,7 @@ class ProfileNavigation extends AppBar {
                           MaterialPageRoute(
                               builder: (context) => const WikiPage()))
                     },
-                icon: Image.asset('assets/help-circle.png'))
+                icon: SvgPicture.asset("assets/questionmark.svg"))
           ],
         );
 }

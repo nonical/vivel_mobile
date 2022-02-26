@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/donation.dart';
@@ -53,7 +54,8 @@ class DonationListItemWidget extends StatelessWidget {
                       width: 60,
                       decoration: const BoxDecoration(
                           color: RED, shape: BoxShape.circle),
-                      child: Center(child: Image.asset('assets/activity.png')),
+                      child: Center(
+                          child: SvgPicture.asset('assets/activity.svg')),
                     )
                   ],
                 )),
@@ -90,7 +92,7 @@ class DonationListItemWidget extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/chevron-right.png'),
+                  SvgPicture.asset('assets/chevron-right.svg'),
                 ],
               ),
             ),

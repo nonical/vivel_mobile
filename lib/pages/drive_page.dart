@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
@@ -95,7 +96,7 @@ Widget body(Drive drive) {
                   children: [
                     Column(
                       children: [
-                        Image.asset('assets/droplet.png'),
+                        SvgPicture.asset('assets/droplet.svg'),
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Text(
@@ -107,7 +108,7 @@ Widget body(Drive drive) {
                     ),
                     Column(
                       children: [
-                        Image.asset('assets/funnel.png'),
+                        SvgPicture.asset('assets/funnel.svg'),
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Text(

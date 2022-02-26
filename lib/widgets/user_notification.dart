@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/user_notification.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -44,7 +45,7 @@ class UserNotificationWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: Image.asset('assets/ellipse.png'),
+                      child: SvgPicture.asset('assets/notification-circle.svg'),
                     )
                   ],
                 )),
@@ -93,7 +94,7 @@ class UserNotificationWidget extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/chevron-right.png'),
+                  SvgPicture.asset('assets/chevron-right.svg'),
                 ],
               ),
             ),

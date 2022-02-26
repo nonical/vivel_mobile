@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../models/faq.dart';
 import '../../pages/answer_page.dart';
 
@@ -28,7 +29,7 @@ class FAQWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 15),
-                      child: Image.asset('assets/help-circle.png'),
+                      child: SvgPicture.asset('assets/questionmark.svg'),
                     )
                   ],
                 )),
@@ -66,7 +67,7 @@ class FAQWidget extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/chevron-right.png'),
+                  SvgPicture.asset('assets/chevron-right.svg'),
                 ],
               ),
             ),

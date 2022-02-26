@@ -21,7 +21,7 @@ class HomeNavigation extends AppBar {
                                       '49649a15-21a8-4048-abb5-2b17f5cb4efa',
                                 )))
                   },
-              icon: Image.asset('assets/bell.png')),
+              icon: SvgPicture.asset('assets/bell.svg')),
           actions: [
             IconButton(
                 onPressed: () => {
@@ -33,7 +33,7 @@ class HomeNavigation extends AppBar {
                                         '49649a15-21a8-4048-abb5-2b17f5cb4efa',
                                   )))
                     },
-                icon: Image.asset('assets/user.png'))
+                icon: SvgPicture.asset('assets/user.svg'))
           ],
         );
 }
