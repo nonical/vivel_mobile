@@ -1,51 +1,62 @@
 import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class APIService {
+  static Future<http.Response> _get(
+      String route, Map<String, dynamic>? queryParameters) async {
+    var url = Uri.parse('${dotenv.env['API_URL']}/$route');
+
+    if (queryParameters != null) {
+      url = url.replace(queryParameters: queryParameters);
+    }
+
+    final accessToken =
+        await const FlutterSecureStorage().read(key: 'access_token');
+
+    final res =
+        await http.get(url, headers: {'Authorization': 'Bearer $accessToken'});
+
+    if (res.statusCode >= 400) {
+      throw Exception(res);
+    }
+
+    return res;
+  }
+
+  static Future<http.Response> _post(String route, dynamic body) async {
+    var url = Uri.parse('${dotenv.env['API_URL']}/$route');
+    final accessToken =
+        await const FlutterSecureStorage().read(key: 'access_token');
+
+    final res = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $accessToken'
+        },
+        body: jsonEncode(body));
+
+    if (res.statusCode >= 400) {
+      throw Exception(res);
+    }
+
+    return res;
+  }
+
   static Future<List<dynamic>?> Get(String route, dynamic object) async {
-    String queryString = Uri(queryParameters: object).query;
-    String baseUrl = 'http://vivel.azurewebsites.net/${route}';
-
-    if (object != null) {
-      baseUrl = '${baseUrl}?${queryString}';
-    }
-
-    final response = await http.get(Uri.parse(baseUrl));
-
-    if (response.statusCode == 200) {
-      return json.decode(response.body)["results"] as List;
-    }
-
-    return null;
+    final response = await _get(route, object);
+    return json.decode(response.body)["results"] as List;
   }
 
   static Future<Map<String, dynamic>?> getSingle(
       String route, dynamic object) async {
-    String queryString = Uri(queryParameters: object).query;
-    String baseUrl = '${dotenv.env['API_URL']}/$route';
-
-    if (object != null) {
-      baseUrl = '$baseUrl?$queryString';
-    }
-
-    final response = await http.get(Uri.parse(baseUrl));
-
-    if (response.statusCode == 200) {
-      return json.decode(response.body) as Map<String, dynamic>;
-    }
-
-    return null;
+    final response = await _get(route, object);
+    return json.decode(response.body) as Map<String, dynamic>;
   }
 
   static Future<dynamic?> Post(String route, dynamic object) async {
-    String baseUrl = '${dotenv.env['API_URL']}/$route';
-
-    final response = await http.post(Uri.parse(baseUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(object));
-
-    return response;
+    return _post(route, object);
   }
 }

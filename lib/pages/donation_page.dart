@@ -126,7 +126,7 @@ Widget conditionalCard(Donation donation) {
       break;
     case 'Scheduled':
       message =
-          'Your donation is scheduled for:\n${DateFormat(DateFormat.YEAR_MONTH_DAY).format(DateTime.parse(donation!.scheduledAt!))} at ${DateFormat(DateFormat.HOUR_MINUTE).format(DateTime.parse(donation.scheduledAt!))}';
+          'Your donation is scheduled for:\n${DateFormat(DateFormat.YEAR_MONTH_DAY).format(DateTime.parse(donation.scheduledAt!))} at ${DateFormat(DateFormat.HOUR_MINUTE).format(DateTime.parse(donation.scheduledAt!))}';
       break;
     case 'Rejected':
       message = 'Your donation has been rejected:\n${donation.note}';

@@ -1,4 +1,4 @@
-package com.example.vivel_mobile
+package com.nonical.vivel
 
 import io.flutter.embedding.android.FlutterActivity
 
