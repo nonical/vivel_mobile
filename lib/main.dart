@@ -21,14 +21,15 @@ class _VivelAppState extends State<VivelApp> {
   final appAuth = FlutterAppAuth();
   final storage = const FlutterSecureStorage();
 
-  String userId = '';
+  String? userId;
+
   bool isBusy = false;
   bool isLoggedIn = false;
 
   @override
   void initState() {
-    super.initState();
     initAction();
+    super.initState();
   }
 
   Future<void> initAction() async {
@@ -43,7 +44,8 @@ class _VivelAppState extends State<VivelApp> {
     try {
       final response = await appAuth.token(getTokenRequest(refreshToken));
 
-      storage.write(key: 'refresh_token', value: response!.refreshToken);
+      await storage.write(key: 'refresh_token', value: response!.refreshToken);
+      await storage.write(key: 'access_token', value: response.accessToken);
 
       setState(() {
         isBusy = false;
@@ -52,6 +54,7 @@ class _VivelAppState extends State<VivelApp> {
       });
     } catch (e, s) {
       print('error on refresh token: $e - stack: $s');
+      logoutAction();
     }
   }
 
@@ -65,22 +68,21 @@ class _VivelAppState extends State<VivelApp> {
           .authorizeAndExchangeCode(getAuthorizationTokenRequest());
 
       await storage.write(key: 'refresh_token', value: result!.refreshToken);
+      await storage.write(key: 'access_token', value: result.accessToken);
 
       setState(() {
         isBusy = false;
         isLoggedIn = true;
+        userId = parseIdToken(result.idToken!)['sub'];
       });
     } catch (e, s) {
       print('login error: $e - stack: $s');
-
-      setState(() {
-        isBusy = false;
-        isLoggedIn = false;
-      });
+      logoutAction();
     }
   }
 
   Future<void> logoutAction() async {
+    await storage.delete(key: 'access_token');
     await storage.delete(key: 'refresh_token');
 
     setState(() {
@@ -96,7 +98,7 @@ class _VivelAppState extends State<VivelApp> {
             body: isBusy
                 ? const Center(child: CircularProgressIndicator())
                 : isLoggedIn
-                    ? HomePage(userId: userId)
+                    ? HomePage(userId: userId!)
                     : Center(
                         child: ElevatedButton(
                           child: const Text('Login'),
