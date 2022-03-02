@@ -18,6 +18,10 @@ class DonationService {
     return <Donation>[];
   }
 
+  static Future<dynamic> post(dynamic body) async {
+    return APIService.Post('donation', body);
+  }
+
   static Future<Donation> getById(String donationId) async {
     var donation = await APIService.getSingle('donation/$donationId', null);
     return Donation.fromJson(donation!);

@@ -5,9 +5,11 @@ import 'package:intl/intl.dart';
 import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/constants/text_styles.dart';
 import 'package:vivel_mobile/models/drive.dart';
+import 'package:vivel_mobile/services/donation_service.dart';
 import 'package:vivel_mobile/services/drive_service.dart';
 import 'package:vivel_mobile/utils/map_launcher.dart';
 import 'package:vivel_mobile/utils/mapbox.dart';
+import 'package:vivel_mobile/utils/snack_bar.dart';
 import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/submit_button.dart';
 
@@ -22,6 +24,17 @@ class DrivePage extends StatefulWidget {
 
 class _DrivePageState extends State<DrivePage> {
   late Future<Drive> drive;
+
+  void apply(BuildContext context) async {
+    final request = {"driveId": widget.driveId, "userId": ""};
+    final response = await DonationService.post(request);
+
+    final snackBarText = (response.statusCode == 200)
+        ? ("Successfully applied")
+        : ("You can't apply to this drive");
+
+    SnackBarUtil.openSnackBar(context, snackBarText);
+  }
 
   @override
   void initState() {
@@ -42,7 +55,97 @@ class _DrivePageState extends State<DrivePage> {
             future: drive,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return body(snapshot.data!);
+                return SizedBox.expand(
+                  child: Column(
+                    children: [
+                      Center(
+                          child: GestureDetector(
+                        child: Image(
+                            image: getStaticImage(
+                                snapshot.data!.hospital!.longitude,
+                                snapshot.data!.hospital!.latitude)),
+                        onTap: () {
+                          openLocationInMaps(
+                              snapshot.data!.hospital!.longitude,
+                              snapshot.data!.hospital!.latitude,
+                              snapshot.data!.hospital!.name);
+                        },
+                      )),
+                      Column(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Column(
+                                children: [
+                                  if (snapshot.data!.urgency)
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text('URGENT',
+                                          style: HEADING3.copyWith(color: RED)),
+                                    ),
+                                  Text(
+                                    snapshot.data!.hospital!.name,
+                                    style: BIG_HEADER,
+                                  ),
+                                  Text(
+                                    DateFormat(DateFormat.YEAR_MONTH_DAY)
+                                        .format(DateTime.parse(
+                                            snapshot.data!.createdAt)),
+                                    style: HEADING4,
+                                  )
+                                ],
+                              )),
+                          Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 75, bottom: 50),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Column(
+                                    children: [
+                                      SvgPicture.asset('assets/droplet.svg'),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20),
+                                        child: Text(
+                                          snapshot.data!.bloodType,
+                                          style: HEADING3.copyWith(color: RED1),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      SvgPicture.asset('assets/funnel.svg'),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 20),
+                                        child: Text(
+                                          '${snapshot.data!.amount} ml',
+                                          style: HEADING3.copyWith(color: RED1),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ))
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 25, right: 25),
+                                child: SubmitButton(
+                                  text: 'Apply',
+                                  onPressed: () async => apply(context),
+                                )),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
@@ -50,89 +153,4 @@ class _DrivePageState extends State<DrivePage> {
               return const Center(child: CircularProgressIndicator());
             }));
   }
-}
-
-Widget body(Drive drive) {
-  return SizedBox.expand(
-    child: Column(
-      children: [
-        Center(
-            child: GestureDetector(
-          child: Image(
-              image: getStaticImage(
-                  drive.hospital!.longitude, drive.hospital!.latitude)),
-          onTap: () {
-            openLocationInMaps(drive.hospital!.longitude,
-                drive.hospital!.latitude, drive.hospital!.name);
-          },
-        )),
-        Column(
-          children: [
-            Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Column(
-                  children: [
-                    if (drive.urgency)
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('URGENT',
-                            style: HEADING3.copyWith(color: RED)),
-                      ),
-                    Text(
-                      drive.hospital!.name,
-                      style: BIG_HEADER,
-                    ),
-                    Text(
-                      DateFormat(DateFormat.YEAR_MONTH_DAY)
-                          .format(DateTime.parse(drive.createdAt)),
-                      style: HEADING4,
-                    )
-                  ],
-                )),
-            Padding(
-                padding: const EdgeInsets.only(top: 75, bottom: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        SvgPicture.asset('assets/droplet.svg'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            drive.bloodType,
-                            style: HEADING3.copyWith(color: RED1),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        SvgPicture.asset('assets/funnel.svg'),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Text(
-                            '${drive.amount} ml',
-                            style: HEADING3.copyWith(color: RED1),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ))
-          ],
-        ),
-        Row(
-          children: [
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.only(left: 25, right: 25),
-              // TODO: Implement 'Apply' method
-              child: SubmitButton(text: 'Apply', onPressed: () => {}),
-            )),
-          ],
-        )
-      ],
-    ),
-  );
 }
