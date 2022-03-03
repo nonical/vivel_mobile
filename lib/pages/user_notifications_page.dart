@@ -39,7 +39,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   child: Column(
                     children: [
                       UserNotificationWidget(
-                          notification: snapshot.data![index]),
+                        notification: snapshot.data![index],
+                        userId: widget.userId,
+                      ),
                       const Divider(
                         height: 1,
                         color: Colors.grey,

@@ -8,14 +8,17 @@ import 'package:vivel_mobile/pages/drive_page.dart';
 
 class UserNotificationWidget extends StatelessWidget {
   final UserNotification notification;
+  final String userId;
 
-  const UserNotificationWidget({Key? key, required this.notification})
+  const UserNotificationWidget(
+      {Key? key, required this.notification, required this.userId})
       : super(key: key);
 
   Widget getLinkable() {
     if (notification.linkType == "Drive") {
       return DrivePage(
         driveId: notification.linkId,
+        userId: userId,
       );
     } else {
       return DonationPage(

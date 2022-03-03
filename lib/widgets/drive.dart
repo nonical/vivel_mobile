@@ -8,8 +8,10 @@ import 'package:vivel_mobile/pages/drive_page.dart';
 
 class DriveWidget extends StatelessWidget {
   final Drive drive;
+  final String userId;
 
-  const DriveWidget({Key? key, required this.drive}) : super(key: key);
+  const DriveWidget({Key? key, required this.drive, required this.userId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,8 @@ class DriveWidget extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DrivePage(
-                driveId: drive.driveId,
-              ),
+              builder: (context) =>
+                  DrivePage(driveId: drive.driveId, userId: userId),
             ))
       },
       child: Container(
