@@ -15,8 +15,10 @@ import 'package:vivel_mobile/widgets/submit_button.dart';
 
 class DrivePage extends StatefulWidget {
   final String driveId;
+  final String userId;
 
-  const DrivePage({Key? key, required this.driveId}) : super(key: key);
+  const DrivePage({Key? key, required this.driveId, required this.userId})
+      : super(key: key);
 
   @override
   _DrivePageState createState() => _DrivePageState();
@@ -26,12 +28,13 @@ class _DrivePageState extends State<DrivePage> {
   late Future<Drive> drive;
 
   void apply(BuildContext context) async {
-    final request = {"driveId": widget.driveId, "userId": ""};
-    final response = await DonationService.post(request);
-
-    final snackBarText = (response.statusCode == 200)
-        ? ("Successfully applied")
-        : ("You can't apply to this drive");
+    final request = {"driveId": widget.driveId, "userId": widget.userId};
+    var snackBarText = "Successfully applied";
+    try {
+      await DonationService.post(request);
+    } on Exception {
+      snackBarText = "You can't apply to this drive";
+    }
 
     SnackBarUtil.openSnackBar(context, snackBarText);
   }

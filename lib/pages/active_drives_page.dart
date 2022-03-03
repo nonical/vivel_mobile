@@ -5,7 +5,9 @@ import 'package:vivel_mobile/widgets/navigation_bar/back_navigation.dart';
 import 'package:vivel_mobile/widgets/drive.dart';
 
 class ActiveDrivesPage extends StatefulWidget {
-  const ActiveDrivesPage({Key? key}) : super(key: key);
+  final String userId;
+
+  const ActiveDrivesPage({Key? key, required this.userId}) : super(key: key);
 
   @override
   _ActiveDrivesPageState createState() => _ActiveDrivesPageState();
@@ -35,7 +37,8 @@ class _ActiveDrivesPageState extends State<ActiveDrivesPage> {
                   color: Colors.white,
                   child: Column(
                     children: [
-                      DriveWidget(drive: snapshot.data![index]),
+                      DriveWidget(
+                          drive: snapshot.data![index], userId: widget.userId),
                       const Divider(
                         height: 1,
                         color: Colors.grey,
