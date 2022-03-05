@@ -9,7 +9,6 @@ import 'package:vivel_mobile/widgets/user_notification.dart';
 
 class NotificationsPage extends StatefulWidget {
   final String userId;
-  var last_read = "";
   NotificationsPage({Key? key, required this.userId}) : super(key: key);
 
   @override
