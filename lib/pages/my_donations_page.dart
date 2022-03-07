@@ -38,7 +38,9 @@ class _MyDonationsPageState extends State<MyDonationsPage> {
                   color: Colors.white,
                   child: Column(
                     children: [
-                      DonationListItemWidget(donation: snapshot.data![index]),
+                      DonationListItemWidget(
+                          donation: snapshot.data![index],
+                          userId: widget.userId),
                       const Divider(
                         height: 1,
                         color: Colors.grey,

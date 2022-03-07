@@ -14,8 +14,10 @@ import 'package:vivel_mobile/widgets/card.dart';
 
 class DonationPage extends StatefulWidget {
   final String donationId;
+  final String userId;
 
-  const DonationPage({Key? key, required this.donationId}) : super(key: key);
+  const DonationPage({Key? key, required this.donationId, required this.userId})
+      : super(key: key);
 
   @override
   _DonationPageState createState() => _DonationPageState();
@@ -27,7 +29,8 @@ class _DonationPageState extends State<DonationPage> {
   @override
   void initState() {
     super.initState();
-    donation = DonationService.getByIdWithDriveAndHospital(widget.donationId);
+    donation = DonationService.getByIdWithDriveAndHospital(
+        widget.donationId, widget.userId);
   }
 
   @override

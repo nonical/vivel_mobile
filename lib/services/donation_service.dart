@@ -22,22 +22,23 @@ class DonationService {
     return APIService.Post('donation', body);
   }
 
-  static Future<Donation> getById(String donationId) async {
-    var donation = await APIService.getSingle('donation/$donationId', null);
+  static Future<Donation> getById(String userId, String donationId) async {
+    var donation =
+        await APIService.getSingle('user/$userId/donation/$donationId', null);
     return Donation.fromJson(donation!);
   }
 
   static Future<Tuple2<Donation, Drive>> getByIdWithDrive(
-      String donationId) async {
-    var donation = await getById(donationId);
+      String userId, String donationId) async {
+    var donation = await getById(userId, donationId);
     var drive = await DriveService.getById(donation.driveId);
 
     return Tuple2(donation, drive);
   }
 
   static Future<Tuple3<Donation, Drive, Hospital>> getByIdWithDriveAndHospital(
-      String donationId) async {
-    var donation = await getById(donationId);
+      String donationId, String userId) async {
+    var donation = await getById(userId, donationId);
     var drive = await DriveService.getById(donation.driveId);
     var hospital = await HospitalService.getById(drive.hospitalId);
 

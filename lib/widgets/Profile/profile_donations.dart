@@ -52,7 +52,7 @@ class ProfileDonations extends StatelessWidget {
         children: donations.map((donation) {
           return Column(
             children: [
-              DonationListItemWidget(donation: donation),
+              DonationListItemWidget(donation: donation, userId: userId),
               const Divider(
                 height: 1,
                 color: GRAY4,
