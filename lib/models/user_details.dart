@@ -20,7 +20,7 @@ class UserDetails {
       litresDonated: json["litresDonated"],
       lastDonation: json["lastDonation"],
       userName: json["userName"],
-      bloodType: json["bloodType"],
+      bloodType: json["bloodType"] ?? "-",
       verified: json["verified"],
     );
   }

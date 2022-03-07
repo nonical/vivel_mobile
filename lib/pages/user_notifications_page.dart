@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:tuple/tuple.dart';
 import 'package:vivel_mobile/models/user_notification.dart';
@@ -9,7 +8,7 @@ import 'package:vivel_mobile/widgets/user_notification.dart';
 
 class NotificationsPage extends StatefulWidget {
   final String userId;
-  NotificationsPage({Key? key, required this.userId}) : super(key: key);
+  const NotificationsPage({Key? key, required this.userId}) : super(key: key);
 
   @override
   _NotificationsPageState createState() => _NotificationsPageState();

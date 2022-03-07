@@ -7,8 +7,10 @@ import 'package:vivel_mobile/pages/donation_page.dart';
 
 class DonationListItemWidget extends StatelessWidget {
   final Donation donation;
+  final String userId;
 
-  const DonationListItemWidget({Key? key, required this.donation})
+  const DonationListItemWidget(
+      {Key? key, required this.donation, required this.userId})
       : super(key: key);
 
   Widget statusText(String status) {
@@ -36,7 +38,7 @@ class DonationListItemWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  DonationPage(donationId: donation.donationId),
+                  DonationPage(donationId: donation.donationId, userId: userId),
             ))
       },
       child: Container(
@@ -69,7 +71,7 @@ class DonationListItemWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10, right: 10),
-                          child: Text("DZ Hospital", style: HEADING5),
+                          child: Text(donation.hospitalName!, style: HEADING5),
                         ),
                       ),
                     ],

@@ -29,6 +29,7 @@ class UserNotificationWidget extends StatelessWidget {
     } else {
       return DonationPage(
         donationId: notification.linkId,
+        userId: userId,
       );
     }
   }
