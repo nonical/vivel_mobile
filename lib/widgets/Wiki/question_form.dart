@@ -19,11 +19,14 @@ class _QuestionFormWidgetState extends State<QuestionFormWidget> {
       String question = questionEditingController.text;
 
       final request = FAQRequest(question: question).ToJson();
-      final response = await FAQService.Post(request);
 
-      final snackBarText = (response.statusCode == 200)
-          ? ("Successfully saved")
-          : ("An error occured");
+      var snackBarText = "Successfully saved";
+
+      try {
+        await await FAQService.Post(request);
+      } on Exception {
+        snackBarText = "An error occured";
+      }
 
       SnackBarUtil.openSnackBar(context, snackBarText);
       Navigator.pop(context);

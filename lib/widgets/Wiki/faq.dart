@@ -54,7 +54,10 @@ class FAQWidget extends StatelessWidget {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
-                          child: Text(faq.answer),
+                          child: Text(
+                            faq.answer,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ],
