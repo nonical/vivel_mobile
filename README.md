@@ -1,16 +1,25 @@
-# vivel_mobile
+# Vivel mobile app
 
-A new Flutter project.
+## Useful application information
 
-## Getting Started
+- for app to function properly you will have to add a `mapbox api key`
 
-This project is a starting point for a Flutter application.
+- active drives are displayed based on users current location (30 km radius)
 
-A few resources to get you started if this is your first Flutter project:
+- user can apply for a drive if the following conditions are met:
+    - currently has no pending donation requests (user can only have one pending request)
+    - if the drive bloodtype matches the users blood type
+        - if users bloodtype is verified (one donation was approved, or hospital staff added bloodtype to user), user can only apply for bloodtype matched drives
+        - if users bloodtype is not yet verified he can apply for any drive
+    - if there’s been atleast 3 months since the last donation
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- notifications are sent in 5 cases:
+    - successfully applied to donation
+    - donation scheduled by hospital staff
+    - donation approved
+    - donation rejected
+    - drive open in the vicinity (30 km radius)
+    
+- badges are awarded
+    - every 5 donations
+    - every urgent drive approved donation
