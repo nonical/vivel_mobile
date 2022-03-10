@@ -1,5 +1,27 @@
 # Vivel mobile app
 
+## Android emulator requirements
+
+- Minimum API Level 18 (Jelly Bean and up)
+
+- Target with Google APIs
+
+## Login credentials
+
+bob user (mobile):
+
+username: `bob`
+
+password: `Pass123$`
+
+---
+
+alice user (mobile):
+
+username: `alice`
+
+password: `Pass123$`
+
 ## Useful application information
 
 - for app to function properly you will have to add a `mapbox api key`
