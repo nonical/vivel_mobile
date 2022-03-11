@@ -2,9 +2,13 @@
 
 ## Android emulator requirements
 
-- Minimum API Level 18 (Jelly Bean and up)
+- Minimum API Level 18 - required for secure storage of tokens
 
-- Target with Google APIs
+- Target with Google APIs - required for opening the default maps app
+
+- Recommended image is: `Android 10.0 Google APIs`
+
+The `.env.example` file should be copied as `.env` and a MapBox API key should be added.
 
 ## Login credentials
 
