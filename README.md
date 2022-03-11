@@ -8,6 +8,8 @@
 
 - Recommended image is: `Android 10.0 Google APIs`
 
+- Location in emulator should be set in 30km radius from this hospital - https://goo.gl/maps/7196wPzAFFD3JTuL7 so that users can see active drives from seed
+
 The `.env.example` file should be copied as `.env` and a MapBox API key should be added.
 
 ## Login credentials
