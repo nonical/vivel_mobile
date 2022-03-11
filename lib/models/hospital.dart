@@ -4,7 +4,7 @@ class Hospital {
   final double latitude;
   final double longitude;
   final String createdAt;
-  final String updatedAt;
+  final String? updatedAt;
 
   Hospital(
       {required this.hospitalId,

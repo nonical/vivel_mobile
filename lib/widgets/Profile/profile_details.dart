@@ -3,7 +3,7 @@ import 'package:vivel_mobile/constants/text_styles.dart';
 
 class ProfileDetails extends StatelessWidget {
   final int donationsCount;
-  final double litresDonated;
+  final num litresDonated;
   final String bloodType;
 
   const ProfileDetails(

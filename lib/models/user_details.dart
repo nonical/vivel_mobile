@@ -1,6 +1,6 @@
 class UserDetails {
   final int donationCount;
-  final double litresDonated;
+  final num litresDonated;
   final String lastDonation;
   final String userName;
   final String bloodType;
