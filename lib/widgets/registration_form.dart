@@ -27,12 +27,11 @@ class _RegistrationFormWidgetState extends State<RegistrationFormWidget> {
       try {
         await IdentityAPIService.Post("account/signup", request);
       } on Exception catch (e) {
-        print(e);
         snackBarText = e.toString();
       }
 
       SnackBarUtil.openSnackBar(context, snackBarText);
-      // Navigator.pop(context);
+      Navigator.pop(context);
     }
   }
 

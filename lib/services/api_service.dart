@@ -65,17 +65,12 @@ class IdentityAPIService {
   static Future<http.Response> _post(String route, dynamic body) async {
     var url = Uri.parse('${dotenv.env['IDENTITY_URL']}/$route');
 
-    print("body");
-    print(jsonEncode(body));
-
-    final res = await http.post(url,
-        headers: {'Content-Type': 'application/json'}, body: jsonEncode(body));
-
-    print("res");
-    print(res);
+    final res = await http.post(url, body: body);
 
     if (res.statusCode >= 400) {
-      throw Exception(res);
+    print(res.statusCode);
+        print(res.body);
+      throw Exception(jsonDecode(res.body)[0]["description"]);
     }
 
     return res;
