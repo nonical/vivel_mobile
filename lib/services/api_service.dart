@@ -68,8 +68,6 @@ class IdentityAPIService {
     final res = await http.post(url, body: body);
 
     if (res.statusCode >= 400) {
-    print(res.statusCode);
-        print(res.body);
       throw Exception(jsonDecode(res.body)[0]["description"]);
     }
 
