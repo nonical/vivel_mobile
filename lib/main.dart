@@ -109,14 +109,16 @@ class _VivelAppState extends State<VivelApp> {
                               child: const Text('Login'),
                               onPressed: loginAction,
                             ),
-                            RegPageWidget()
+                            const RegistrationButtonWidget()
                           ],
                         ),
                       )));
   }
 }
 
-class RegPageWidget extends StatelessWidget {
+class RegistrationButtonWidget extends StatelessWidget {
+  const RegistrationButtonWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
