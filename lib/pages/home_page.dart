@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/models/drive.dart';
 import 'package:vivel_mobile/models/user_details.dart';
 import 'package:vivel_mobile/services/drive_service.dart';
 import 'package:vivel_mobile/services/user_service.dart';
-import 'package:vivel_mobile/widgets/navigation_bar/home_navigation.dart';
 import 'package:vivel_mobile/widgets/home/home_drives.dart';
 import 'package:vivel_mobile/widgets/home/home_header_one.dart';
 import 'package:vivel_mobile/widgets/home/home_header_two.dart';
+import 'package:vivel_mobile/widgets/navigation_bar/home_navigation.dart';
 
 class HomePage extends StatefulWidget {
   final String userId;
+  final Function logout;
 
-  const HomePage({Key? key, required this.userId}) : super(key: key);
+  const HomePage({Key? key, required this.userId, required this.logout})
+      : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -61,7 +64,19 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ]),
                     ),
-                    HomeDrives(drives: snapshot.data![0], userId: widget.userId)
+                    HomeDrives(
+                        drives: snapshot.data![0], userId: widget.userId),
+                    Center(
+                      heightFactor: 3,
+                      child: GestureDetector(
+                        child: const Text(
+                          'Logout',
+                          style: TextStyle(
+                              color: RED, decoration: TextDecoration.underline),
+                        ),
+                        onTap: () => widget.logout(),
+                      ),
+                    )
                   ],
                 ),
               );

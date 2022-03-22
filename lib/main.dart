@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -47,6 +48,7 @@ class _VivelAppState extends State<VivelApp> {
 
       await storage.write(key: 'refresh_token', value: response!.refreshToken);
       await storage.write(key: 'access_token', value: response.accessToken);
+      await storage.write(key: 'id_token', value: response.idToken);
 
       setState(() {
         isBusy = false;
@@ -70,6 +72,7 @@ class _VivelAppState extends State<VivelApp> {
 
       await storage.write(key: 'refresh_token', value: result!.refreshToken);
       await storage.write(key: 'access_token', value: result.accessToken);
+      await storage.write(key: 'id_token', value: result.idToken);
 
       setState(() {
         isBusy = false;
@@ -83,8 +86,24 @@ class _VivelAppState extends State<VivelApp> {
   }
 
   Future<void> logoutAction() async {
+    setState(() {
+      isBusy = true;
+    });
+
+    final idToken = await storage.read(key: 'id_token');
+
     await storage.delete(key: 'access_token');
     await storage.delete(key: 'refresh_token');
+    await storage.delete(key: 'id_token');
+
+    try {
+      await appAuth.endSession(getEndSessionRequest(idToken));
+    } on PlatformException catch (e, s) {
+      if (e.message != null && !e.message!.contains('User cancelled flow')) {
+        print('login error: $e - stack: $s');
+        rethrow;
+      }
+    }
 
     setState(() {
       isLoggedIn = false;
@@ -99,7 +118,10 @@ class _VivelAppState extends State<VivelApp> {
             body: isBusy
                 ? const Center(child: CircularProgressIndicator())
                 : isLoggedIn
-                    ? HomePage(userId: userId!)
+                    ? HomePage(
+                        userId: userId!,
+                        logout: logoutAction,
+                      )
                     : Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

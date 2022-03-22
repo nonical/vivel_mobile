@@ -36,6 +36,14 @@ TokenRequest getTokenRequest(String? refreshToken) {
       allowInsecureConnections: true);
 }
 
+EndSessionRequest getEndSessionRequest(String? idToken) {
+  return EndSessionRequest(
+      idTokenHint: idToken,
+      postLogoutRedirectUrl: idToken != null ? redirectUrl : null,
+      issuer: issuer,
+      allowInsecureConnections: false);
+}
+
 Map<String, dynamic> parseIdToken(String idToken) {
   final parts = idToken.split(r'.');
   assert(parts.length == 3);
