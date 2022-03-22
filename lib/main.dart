@@ -3,6 +3,7 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:vivel_mobile/pages/home_page.dart';
+import 'package:vivel_mobile/pages/registration_page.dart';
 import 'package:vivel_mobile/utils/oauth_config.dart';
 
 void main() async {
@@ -100,10 +101,32 @@ class _VivelAppState extends State<VivelApp> {
                 : isLoggedIn
                     ? HomePage(userId: userId!)
                     : Center(
-                        child: ElevatedButton(
-                          child: const Text('Login'),
-                          onPressed: loginAction,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              child: const Text('Login'),
+                              onPressed: loginAction,
+                            ),
+                            const RegistrationButtonWidget()
+                          ],
                         ),
                       )));
+  }
+}
+
+class RegistrationButtonWidget extends StatelessWidget {
+  const RegistrationButtonWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: const Text('Register'),
+      onPressed: () => {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const RegistrationPage()))
+      },
+    );
   }
 }
