@@ -47,7 +47,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             builder: (BuildContext context,
                 AsyncSnapshot<Tuple2<List<UserNotification>, String>>
                     snapshot) {
-              if (snapshot.hasData && snapshot.data!.item1.isNotEmpty) {
+              if (snapshot.hasData) {
                 return ListView.separated(
                   itemCount: snapshot.data!.item1.length,
                   separatorBuilder: (context, index) => Row(),
