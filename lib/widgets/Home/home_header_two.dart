@@ -47,9 +47,11 @@ class HomeHeaderTwo extends StatelessWidget {
               Expanded(
                   child: Center(
                 child: Text(
-                    DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY).format(
-                        DateTime.parse(userDetails.lastDonation)
-                            .add(const Duration(days: 90))),
+                    userDetails.lastDonation != null
+                        ? DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY).format(
+                            DateTime.parse(userDetails.lastDonation!)
+                                .add(const Duration(days: 90)))
+                        : '-',
                     style: HEADING3.copyWith(color: GREEN)),
               ))
             ])
