@@ -54,8 +54,10 @@ class HomeHeaderOne extends StatelessWidget {
               Expanded(
                   child: Center(
                 child: Text(
-                    DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY)
-                        .format(DateTime.parse(userDetails.lastDonation)),
+                    userDetails.lastDonation != null
+                        ? DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY)
+                            .format(DateTime.parse(userDetails.lastDonation!))
+                        : '-',
                     style: HEADING3.copyWith(color: RED)),
               ))
             ],

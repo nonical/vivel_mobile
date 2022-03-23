@@ -30,7 +30,7 @@ class _MyDonationsPageState extends State<MyDonationsPage> {
           future: donations,
           builder:
               (BuildContext context, AsyncSnapshot<List<Donation>> snapshot) {
-            if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+            if (snapshot.hasData) {
               return ListView.separated(
                 itemCount: snapshot.data!.length,
                 separatorBuilder: (context, index) => Row(),
