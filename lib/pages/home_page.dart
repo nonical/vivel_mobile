@@ -34,13 +34,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final locationUpdate = UserService.updateLocation(widget.userId);
+
     return Scaffold(
         appBar: HomeNavigation(
           context,
           userId: widget.userId,
         ),
         body: FutureBuilder(
-          future: Future.wait([drives, userDetails]),
+          future: Future.wait([drives, userDetails, locationUpdate]),
           builder:
               (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
             if (snapshot.hasData) {
