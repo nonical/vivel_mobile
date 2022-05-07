@@ -45,6 +45,25 @@ class APIService {
     return res;
   }
 
+  static Future<http.Response> _put(String route, dynamic body) async {
+    var url = Uri.parse('${dotenv.env['API_URL']}/$route');
+    final accessToken =
+        await const FlutterSecureStorage().read(key: 'access_token');
+
+    final res = await http.put(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $accessToken'
+        },
+        body: jsonEncode(body));
+
+    if (res.statusCode >= 400) {
+      throw Exception(res);
+    }
+
+    return res;
+  }
+
   static Future<List<dynamic>?> Get(String route, dynamic object) async {
     final response = await _get(route, object);
     return json.decode(response.body)["results"] as List;
@@ -56,8 +75,12 @@ class APIService {
     return json.decode(response.body) as Map<String, dynamic>;
   }
 
-  static Future<dynamic?> Post(String route, dynamic object) async {
+  static Future<http.Response> Post(String route, dynamic object) async {
     return _post(route, object);
+  }
+
+  static Future<http.Response> Put(String route, dynamic object) async {
+    return _put(route, object);
   }
 }
 
