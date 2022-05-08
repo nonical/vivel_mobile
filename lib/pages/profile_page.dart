@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vivel_mobile/constants/colors.dart';
 import 'package:vivel_mobile/models/badge.dart';
 import 'package:vivel_mobile/models/donation.dart';
 import 'package:vivel_mobile/models/user_details.dart';
+import 'package:vivel_mobile/pages/reset_password.dart';
 import 'package:vivel_mobile/services/badge_service.dart';
 import 'package:vivel_mobile/services/donation_service.dart';
 import 'package:vivel_mobile/services/user_service.dart';
@@ -67,7 +69,21 @@ class _ProfilePageState extends State<ProfilePage> {
                   ProfileDonations(
                     donations: snapshot.data![2] as List<Donation>,
                     userId: widget.userId,
-                  )
+                  ),
+                  Center(
+                    heightFactor: 3,
+                    child: GestureDetector(
+                      child: const Text(
+                        'Change Password',
+                        style: TextStyle(
+                            color: RED, decoration: TextDecoration.underline),
+                      ),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ResetPasswordPage())),
+                    ),
+                  ),
                 ]),
               );
             } else if (snapshot.hasError) {

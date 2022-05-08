@@ -97,7 +97,31 @@ class IdentityAPIService {
     return res;
   }
 
+  static Future<http.Response> _postAuth(String route, dynamic body) async {
+    var url = Uri.parse('${dotenv.env['IDENTITY_URL']}/$route');
+    final accessToken =
+        await const FlutterSecureStorage().read(key: 'access_token');
+
+    final res = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $accessToken'
+        },
+        body: jsonEncode(body));
+
+    if (res.statusCode >= 400) {
+      throw res;
+    }
+
+    return res;
+  }
+
   static Future<dynamic?> Post(String route, dynamic object) async {
     return _post(route, object);
+  }
+
+  static Future<http.Response> PostWithAuth(
+      String route, dynamic object) async {
+    return _postAuth(route, object);
   }
 }

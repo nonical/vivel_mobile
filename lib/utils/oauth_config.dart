@@ -6,7 +6,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 const clientId = 'vivel.mobile';
 const clientSecret = '2bc63e15-a44a-42e9-8597-2fcdee8350e0';
 const redirectUrl = 'com.nonical.vivel:/callback';
-const scopes = ['openid', 'profile', 'scope1', 'offline_access'];
+const scopes = [
+  'openid',
+  'profile',
+  'scope1',
+  'offline_access',
+  'IdentityServerApi'
+];
 
 final issuer = dotenv.env['IDENTITY_URL']!;
 final discoveryUrl = '$issuer/.well-known/openid-configuration';
