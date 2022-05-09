@@ -53,61 +53,63 @@ class _DonationPageState extends State<DonationPage> {
   }
 
   Widget body(Tuple3<Donation, Drive, Hospital> data) {
-    return Column(
-      children: [
-        Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Column(
-              children: [
-                Text(
-                  data.item3.name,
-                  style: BIG_HEADER,
-                ),
-                Text(
-                  DateFormat(DateFormat.YEAR_MONTH_DAY)
-                      .format(DateTime.parse(data.item1.createdAt)),
-                  style: HEADING4,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Status: ${data.item1.status}',
-                      style: CAPTION1.copyWith(color: GRAY3)),
-                )
-              ],
-            )),
-        Padding(
-            padding: const EdgeInsets.only(top: 75, bottom: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    SvgPicture.asset('assets/droplet.svg'),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Text(
-                        data.item2.bloodType,
-                        style: HEADING3.copyWith(color: RED1),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Column(
+                children: [
+                  Text(
+                    data.item3.name,
+                    style: BIG_HEADER,
+                  ),
+                  Text(
+                    DateFormat(DateFormat.YEAR_MONTH_DAY)
+                        .format(DateTime.parse(data.item1.createdAt)),
+                    style: HEADING4,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Status: ${data.item1.status}',
+                        style: CAPTION1.copyWith(color: GRAY3)),
+                  )
+                ],
+              )),
+          Padding(
+              padding: const EdgeInsets.only(top: 75, bottom: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      SvgPicture.asset('assets/droplet.svg'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text(
+                          data.item2.bloodType,
+                          style: HEADING3.copyWith(color: RED1),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SvgPicture.asset('assets/funnel.svg'),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Text(
-                        '${data.item1.amount} ml',
-                        style: HEADING3.copyWith(color: RED1),
-                      ),
-                    )
-                  ],
-                )
-              ],
-            )),
-        conditionalCard(data.item1)
-      ],
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      SvgPicture.asset('assets/funnel.svg'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text(
+                          '${data.item1.amount} ml',
+                          style: HEADING3.copyWith(color: RED1),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              )),
+          conditionalCard(data.item1)
+        ],
+      ),
     );
   }
 }
