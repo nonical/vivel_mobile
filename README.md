@@ -2,11 +2,11 @@
 
 ## Android emulator requirements
 
+- **Please use `Pixel 5` as the device and the `Android 10.0 Google APIs` image**
+
 - Minimum API Level 18 - required for secure storage of tokens
 
 - Target with Google APIs - required for opening the default maps app
-
-- Recommended image is: `Android 10.0 Google APIs`
 
 - Location in emulator should be set in 30km radius from this hospital - https://goo.gl/maps/7196wPzAFFD3JTuL7 so that users can see active drives from seed
 
