@@ -26,12 +26,12 @@ class _RegistrationFormWidgetState extends State<RegistrationFormWidget> {
 
       try {
         await IdentityAPIService.Post("account/signup", request);
+        Navigator.pop(context);
       } on Exception catch (e) {
         snackBarText = e.toString();
       }
 
       SnackBarUtil.openSnackBar(context, snackBarText);
-      Navigator.pop(context);
     }
   }
 
@@ -67,6 +67,7 @@ class _RegistrationFormWidgetState extends State<RegistrationFormWidget> {
                       Padding(
                         padding: const EdgeInsets.all(30),
                         child: TextFormField(
+                          obscureText: true,
                           controller: passwordEditingController,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
