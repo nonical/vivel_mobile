@@ -61,90 +61,108 @@ class _DrivePageState extends State<DrivePage> {
                 return SizedBox.expand(
                   child: Column(
                     children: [
-                      Center(
-                          child: GestureDetector(
-                        child: Image(
+                      Expanded(
+                        child: Center(
+                            child: GestureDetector(
+                          child: Image(
+                            width: double.infinity,
                             image: getStaticImage(
                                 snapshot.data!.hospital!.longitude,
-                                snapshot.data!.hospital!.latitude)),
-                        onTap: () {
-                          openLocationInMaps(
-                              snapshot.data!.hospital!.longitude,
-                              snapshot.data!.hospital!.latitude,
-                              snapshot.data!.hospital!.name);
-                        },
-                      )),
-                      Column(
-                        children: [
-                          Padding(
-                              padding: const EdgeInsets.only(top: 20),
-                              child: Column(
-                                children: [
-                                  if (snapshot.data!.urgency)
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text('URGENT',
-                                          style: HEADING3.copyWith(color: RED)),
-                                    ),
-                                  Text(
-                                    snapshot.data!.hospital!.name,
-                                    style: BIG_HEADER,
-                                  ),
-                                  Text(
-                                    DateFormat(DateFormat.YEAR_MONTH_DAY)
-                                        .format(DateTime.parse(
-                                            snapshot.data!.createdAt)),
-                                    style: HEADING4,
-                                  )
-                                ],
-                              )),
-                          Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 75, bottom: 50),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Column(
-                                    children: [
-                                      SvgPicture.asset('assets/droplet.svg'),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 20),
-                                        child: Text(
-                                          snapshot.data!.bloodType,
-                                          style: HEADING3.copyWith(color: RED1),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      SvgPicture.asset('assets/funnel.svg'),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 20),
-                                        child: Text(
-                                          '${snapshot.data!.amount} ml',
-                                          style: HEADING3.copyWith(color: RED1),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ))
-                        ],
+                                snapshot.data!.hospital!.latitude),
+                            fit: BoxFit.fitWidth,
+                          ),
+                          onTap: () {
+                            openLocationInMaps(
+                                snapshot.data!.hospital!.longitude,
+                                snapshot.data!.hospital!.latitude,
+                                snapshot.data!.hospital!.name);
+                          },
+                        )),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 25, right: 25),
-                                child: SubmitButton(
-                                  text: 'Apply',
-                                  onPressed: () async => apply(context),
-                                )),
-                          )
-                        ],
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(children: [
+                            Column(
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: Column(
+                                      children: [
+                                        if (snapshot.data!.urgency)
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text('URGENT',
+                                                style: HEADING3.copyWith(
+                                                    color: RED)),
+                                          ),
+                                        Text(
+                                          snapshot.data!.hospital!.name,
+                                          style: BIG_HEADER,
+                                        ),
+                                        Text(
+                                          DateFormat(DateFormat.YEAR_MONTH_DAY)
+                                              .format(DateTime.parse(
+                                                  snapshot.data!.createdAt)),
+                                          style: HEADING4,
+                                        )
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 75, bottom: 50),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            SvgPicture.asset(
+                                                'assets/droplet.svg'),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 20),
+                                              child: Text(
+                                                snapshot.data!.bloodType,
+                                                style: HEADING3.copyWith(
+                                                    color: RED1),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            SvgPicture.asset(
+                                                'assets/funnel.svg'),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 20),
+                                              child: Text(
+                                                '${snapshot.data!.amount} ml',
+                                                style: HEADING3.copyWith(
+                                                    color: RED1),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ))
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 25, right: 25),
+                                      child: SubmitButton(
+                                        text: 'Apply',
+                                        onPressed: () async => apply(context),
+                                      )),
+                                )
+                              ],
+                            )
+                          ]),
+                        ),
                       )
                     ],
                   ),
